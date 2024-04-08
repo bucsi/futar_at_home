@@ -1,28 +1,30 @@
-import gleam/result.{try}
-import gleam/hackney
-import gleam/json
-import gleam/http/request
 import gleam/io
-import gleam/dynamic
-import gleam/string
-import internal/env
+import gleam/json
+import gleam/list
+import dot_env
+import dot_env/env
+import gleam/fetch
+import gleam/http/request
+import gleam/javascript/promise
 import internal/bkk_url
+import internal/responses/stop
 
 pub fn main() {
-  let api_key = env.load()
-  io.debug(bkk_url.arrivals_and_departures_for_stop("BKK_F03392", api_key))
-  let assert Ok(request) =
+  dot_env.load()
+  let assert Ok(api_key) = env.get("FUTAR_API_KEY")
+  let assert Ok(req) =
     request.to(bkk_url.arrivals_and_departures_for_stop("BKK_F03392", api_key))
 
-  use response <- try(hackney.send(request))
+  use resp <- promise.try_await(fetch.send(req))
+  use resp <- promise.try_await(fetch.read_text_body(resp))
 
-  try(
-    json.decode(response.body, dynamic.dict(dynamic.string, dynamic.dynamic)),
-    fn(v) {
-      io.debug(v)
-      Ok(Nil)
-    },
-  )
+  let assert Ok(stop_data) = json.decode(resp.body, stop.get_decoder())
 
-  Ok(Nil)
+  let assert Ok(first_departure) =
+    stop_data.data.entry.stop_times
+    |> list.at(0)
+
+  io.debug(first_departure.stop_headsign)
+
+  promise.resolve(Ok(Nil))
 }
