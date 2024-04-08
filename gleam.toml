@@ -19,6 +19,7 @@ gleam_json = "~> 1.0"
 gleam_http = "~> 3.6"
 gleam_fetch = "~> 0.4"
 gleam_javascript = "~> 0.8"
+birl = "~> 1.6"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"

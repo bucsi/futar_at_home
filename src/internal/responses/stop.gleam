@@ -1,5 +1,6 @@
 import gleam/dynamic
 import gleam/option.{type Option}
+import gleam/dict.{type Dict}
 
 pub type Response {
   Response(
@@ -12,12 +13,34 @@ pub type Response {
   )
 }
 
+pub fn get_decoder() -> dynamic.Decoder(Response) {
+  dynamic.decode6(
+    Response,
+    dynamic.field("currentTime", dynamic.int),
+    dynamic.field("version", dynamic.int),
+    dynamic.field("status", dynamic.string),
+    dynamic.field("code", dynamic.int),
+    dynamic.field("text", dynamic.string),
+    dynamic.field("data", get_data_decoder()),
+  )
+}
+
 pub type Data {
   Data(
     limit_exceeded: Bool,
     entry: Entry,
-    references: dynamic.Dynamic,
+    references: References,
     class: String,
+  )
+}
+
+fn get_data_decoder() -> dynamic.Decoder(Data) {
+  dynamic.decode4(
+    Data,
+    dynamic.field("limitExceeded", dynamic.bool),
+    dynamic.field("entry", get_entry_decoder()),
+    dynamic.field("references", get_references_decoder()),
+    dynamic.field("class", dynamic.string),
   )
 }
 
@@ -28,6 +51,17 @@ pub type Entry {
     alert_ids: List(String),
     nearby_stop_ids: List(String),
     stop_times: List(StopTime),
+  )
+}
+
+fn get_entry_decoder() -> dynamic.Decoder(Entry) {
+  dynamic.decode5(
+    Entry,
+    dynamic.field("stopId", dynamic.string),
+    dynamic.field("routeIds", dynamic.list(dynamic.string)),
+    dynamic.field("alertIds", dynamic.list(dynamic.string)),
+    dynamic.field("nearbyStopIds", dynamic.list(dynamic.string)),
+    dynamic.field("stopTimes", dynamic.list(get_stop_time_decoder())),
   )
 }
 
@@ -60,35 +94,48 @@ fn get_stop_time_decoder() -> dynamic.Decoder(StopTime) {
   )
 }
 
-fn get_entry_decoder() -> dynamic.Decoder(Entry) {
+pub type References {
+  References(
+    agencies: Dict(String, dynamic.Dynamic),
+    routes: Dict(String, dynamic.Dynamic),
+    stops: Dict(String, dynamic.Dynamic),
+    trips: Dict(String, Trip),
+    alerts: Dict(String, dynamic.Dynamic),
+  )
+}
+
+pub fn get_references_decoder() -> dynamic.Decoder(References) {
   dynamic.decode5(
-    Entry,
-    dynamic.field("stopId", dynamic.string),
-    dynamic.field("routeIds", dynamic.list(dynamic.string)),
-    dynamic.field("alertIds", dynamic.list(dynamic.string)),
-    dynamic.field("nearbyStopIds", dynamic.list(dynamic.string)),
-    dynamic.field("stopTimes", dynamic.list(get_stop_time_decoder())),
+    References,
+    dynamic.field("agencies", dynamic.dict(dynamic.string, dynamic.dynamic)),
+    dynamic.field("routes", dynamic.dict(dynamic.string, dynamic.dynamic)),
+    dynamic.field("stops", dynamic.dict(dynamic.string, dynamic.dynamic)),
+    dynamic.field("trips", dynamic.dict(dynamic.string, get_trip_decoder())),
+    dynamic.field("alerts", dynamic.dict(dynamic.string, dynamic.dynamic)),
   )
 }
 
-fn get_data_decoder() -> dynamic.Decoder(Data) {
-  dynamic.decode4(
-    Data,
-    dynamic.field("limitExceeded", dynamic.bool),
-    dynamic.field("entry", get_entry_decoder()),
-    dynamic.field("references", dynamic.dynamic),
-    dynamic.field("class", dynamic.string),
+pub type Trip {
+  Trip(
+    id: String,
+    route_id: String,
+    shape_id: String,
+    block_id: String,
+    trip_headsign: String,
+    service_id: String,
+    direction_id: String,
   )
 }
 
-pub fn get_decoder() -> dynamic.Decoder(Response) {
-  dynamic.decode6(
-    Response,
-    dynamic.field("currentTime", dynamic.int),
-    dynamic.field("version", dynamic.int),
-    dynamic.field("status", dynamic.string),
-    dynamic.field("code", dynamic.int),
-    dynamic.field("text", dynamic.string),
-    dynamic.field("data", get_data_decoder()),
+pub fn get_trip_decoder() -> dynamic.Decoder(Trip) {
+  dynamic.decode7(
+    Trip,
+    dynamic.field("id", dynamic.string),
+    dynamic.field("routeId", dynamic.string),
+    dynamic.field("shapeId", dynamic.string),
+    dynamic.field("blockId", dynamic.string),
+    dynamic.field("tripHeadsign", dynamic.string),
+    dynamic.field("serviceId", dynamic.string),
+    dynamic.field("directionId", dynamic.string),
   )
 }
