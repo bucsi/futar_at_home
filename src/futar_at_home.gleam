@@ -24,7 +24,7 @@ pub fn main() {
   let assert Ok(_) =
     wisp.mist_handler(handle_request(_, api_key), secret_key_base)
     |> mist.new
-    |> mist.port(8000)
+    |> mist.port(8080)
     |> mist.start_http
 
   process.sleep_forever()

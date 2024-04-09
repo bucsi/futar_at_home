@@ -1,6 +1,5 @@
 import gleam/list
 import gleam/string_builder.{append, from_string, to_string}
-import gleam/io
 
 pub fn arrivals_and_departures_for_stop(
   stop_ids: List(String),
