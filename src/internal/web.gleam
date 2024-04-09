@@ -9,22 +9,29 @@ pub fn middleware(
   req: wisp.Request,
   handle_request: fn(wisp.Request) -> wisp.Response,
 ) -> wisp.Response {
-  // Log information about the request and response.
   use <- wisp.log_request(req)
-
-  // Return a default 500 response if the request handler crashes.
   use <- wisp.rescue_crashes
-
-  // Rewrite HEAD requests to GET requests and return an empty body.
+  use <- wisp.serve_static(req, under: "/static", from: static_directory())
   use req <- wisp.handle_head(req)
 
   // Handle the request!
   handle_request(req)
 }
 
+fn static_directory() -> String {
+  let assert Ok(priv_directory) = wisp.priv_directory("futar_at_home")
+  priv_directory <> "/static"
+}
+
 pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
   html.html([], [
-    html.head([], [html.meta([attribute("charset", "utf-8")])]),
+    html.head([], [
+      html.meta([attribute("charset", "utf-8")]),
+      html.link([
+        attribute("rel", "stylesheet"),
+        attribute("href", "/static/style.css"),
+      ]),
+    ]),
     html.body([], [
       html.h1([], [element.text("Hello, Joe!")]),
       html.main([], [

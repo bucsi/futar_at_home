@@ -30,31 +30,31 @@ pub fn main() {
   process.sleep_forever()
 }
 
-pub fn handle_request(req: Request, api_key: String) -> Response {
+fn handle_request(req: Request, api_key: String) -> Response {
   use _ <- web.middleware(req)
+  wisp.html_response(string_builder.from_string("hello joe"), 200)
+  // let assert Ok(req) =
+  //   request.to(bkk_url.arrivals_and_departures_for_stop(
+  //     ["BKK_F03392", "BKK_19824287"],
+  //     api_key,
+  //   ))
 
-  let assert Ok(req) =
-    request.to(bkk_url.arrivals_and_departures_for_stop(
-      ["BKK_F03392", "BKK_19824287"],
-      api_key,
-    ))
+  // let assert Ok(resp) = hackney.send(req)
 
-  let assert Ok(resp) = hackney.send(req)
-
-  case json.decode(resp.body, stop.get_decoder()) {
-    Ok(decoded) -> {
-      decoded
-      |> construct_timetables
-      |> web.template
-      |> wisp.html_response(200)
-    }
-    Error(e) -> {
-      e
-      |> string.inspect
-      |> string_builder.from_string
-      |> wisp.html_response(500)
-    }
-  }
+  // case json.decode(resp.body, stop.get_decoder()) {
+  //   Ok(decoded) -> {
+  //     decoded
+  //     |> construct_timetables
+  //     |> web.template
+  //     |> wisp.html_response(200)
+  //   }
+  //   Error(e) -> {
+  //     e
+  //     |> string.inspect
+  //     |> string_builder.from_string
+  //     |> wisp.html_response(500)
+  //   }
+  // }
   // wisp.html_response(string_builder.from_string(response), 200)
 }
 
