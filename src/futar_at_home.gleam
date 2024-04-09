@@ -1,8 +1,6 @@
 import gleam/io
-import gleam/json.{type DecodeError}
+import gleam/json
 import gleam/list
-import gleam/dict
-import gleam/option
 import gleam/result
 import birl
 import dot_env

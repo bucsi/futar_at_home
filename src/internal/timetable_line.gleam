@@ -1,4 +1,3 @@
-import gleam/io
 import gleam/dict
 import gleam/option
 import gleam/string_builder
