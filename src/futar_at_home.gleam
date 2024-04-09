@@ -1,7 +1,5 @@
-import gleam/io
 import gleam/json
 import gleam/list
-import gleam/result
 import gleam/string
 import gleam/hackney
 import gleam/string_builder

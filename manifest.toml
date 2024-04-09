@@ -36,9 +36,11 @@ packages = [
 [requirements]
 birl = { version = "~> 1.6" }
 dot_env = { version = "~> 0.3" }
+gleam_erlang = { version = "~> 0.25"}
 gleam_hackney = { version = "~> 1.2" }
 gleam_http = { version = "~> 3.6" }
 gleam_json = { version = "~> 1.0" }
 gleam_stdlib = { version = "~> 0.34 or ~> 1.0" }
 gleeunit = { version = "~> 1.0" }
-wisp = { version = "~> 0.14"}
+mist = { version = "~> 1.0"}
+wisp = { version = "~> 0.14" }
