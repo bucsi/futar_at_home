@@ -55,7 +55,6 @@ pub fn handle_request(req: Request, api_key: String) -> Response {
       |> wisp.html_response(500)
     }
   }
-  // wisp.html_response(string_builder.from_string(response), 200)
 }
 
 fn construct_timetables(stop: stop.Response) {

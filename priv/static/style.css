@@ -1,0 +1,43 @@
+@import url('https://fonts.cdnfonts.com/css/frutiger');
+h1 {
+    width: 100%;
+    margin: 1em;
+    text-align: center;
+}
+body {
+    margin:0;
+    padding: 0;
+    font-family: 'Frutiger', sans-serif;
+    background-color: #2D2D5D;
+    color: #F2F2F2;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+tr {
+    height: 2.5em;
+}
+
+th, tr:nth-of-type(even) {
+    background-color: #454E99;
+}
+
+th, td {
+    text-align: center;
+}
+
+.line-number {
+    border-radius: 5px;
+    background-color: attr(data-color);
+    width: 4ch;
+    padding: 8px;
+    display: inline-block;
+}
+
+.destination-chevron {
+    font-size: .7em;
+    margin-right: .5em;
+}

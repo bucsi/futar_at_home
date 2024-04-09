@@ -15,7 +15,12 @@ pub type TimetableLine {
 }
 
 pub type HtmlReadyTimetableLine {
-  HtmlReadyTimetableLine(departure: String, line: String, headsign: String)
+  HtmlReadyTimetableLine(
+    departure: String,
+    line: String,
+    headsign: String,
+    color: String,
+  )
 }
 
 pub fn from_stop_time(
@@ -50,7 +55,8 @@ pub fn to_html_ready(timetable: TimetableLine, server_time: birl.Time) {
   HtmlReadyTimetableLine(
     departure: birl.legible_difference(server_time, timetable.departure),
     line: timetable.route.short_name,
-    headsign: "▶ " <> timetable.headsign,
+    headsign: timetable.headsign,
+    color: timetable.route.color,
   )
 }
 
