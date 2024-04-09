@@ -22,8 +22,4 @@ pub fn arrivals_and_departures_for_stop(
   stop_ids
   |> list.fold(uri, fn(uri, stop_id) { append(uri, "&stopId=" <> stop_id) })
   |> to_string()
-  |> io.debug
-  stop_ids
-  |> list.fold(uri, fn(uri, stop_id) { append(uri, "&stopId=" <> stop_id) })
-  |> to_string()
 }

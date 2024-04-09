@@ -4,7 +4,6 @@ import gleam/string_builder
 import birl
 import internal/responses/stop
 import internal/util/pad.{PadLeft, PadRight, pad}
-import gleam/io
 
 pub type TimetableLine {
   TimetableLine(
@@ -35,26 +34,12 @@ pub fn from_stop_time(
     |> option.unwrap(bus.departure_time)
     |> birl.from_unix
 
-  let asd =
-    TimetableLine(
-      departure: departure,
-      line: trip.route_id,
-      headsign: bus.stop_headsign,
-      route: route,
-    )
-
-  print_if_hev(bus, asd)
-  asd
-}
-
-fn print_if_hev(bus: stop.StopTime, asd: TimetableLine) {
-  case asd.route.kind {
-    "SUBURBAN_RAILWAY" -> {
-      io.debug(bus)
-      Nil
-    }
-    _ -> Nil
-  }
+  TimetableLine(
+    departure: departure,
+    line: trip.route_id,
+    headsign: bus.stop_headsign,
+    route: route,
+  )
 }
 
 pub fn to_string(timetable: TimetableLine, server_time: birl.Time) {
