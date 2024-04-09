@@ -22,6 +22,7 @@ gleam_hackney = "~> 1.2"
 wisp = "~> 0.14"
 mist = "~> 1.0"
 gleam_erlang = "~> 0.25"
+lustre = "~> 4.1"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"

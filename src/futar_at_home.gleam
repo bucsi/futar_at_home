@@ -41,18 +41,24 @@ pub fn handle_request(req: Request, api_key: String) -> Response {
 
   let assert Ok(resp) = hackney.send(req)
 
-  let decoded_response = json.decode(resp.body, stop.get_decoder())
-  let response = case decoded_response {
-    Ok(decoded_response) -> handle_stop_data(decoded_response)
-    Error(err) -> {
-      string.inspect(err)
+  case json.decode(resp.body, stop.get_decoder()) {
+    Ok(decoded) -> {
+      decoded
+      |> construct_timetables
+      |> web.template
+      |> wisp.html_response(200)
+    }
+    Error(e) -> {
+      e
+      |> string.inspect
+      |> string_builder.from_string
+      |> wisp.html_response(500)
     }
   }
-
-  wisp.html_response(string_builder.from_string(response), 200)
+  // wisp.html_response(string_builder.from_string(response), 200)
 }
 
-fn handle_stop_data(stop: stop.Response) {
+fn construct_timetables(stop: stop.Response) {
   let server_time = birl.from_unix(stop.current_time / 1000)
 
   stop.data.entry.stop_times
@@ -61,6 +67,5 @@ fn handle_stop_data(stop: stop.Response) {
     stop.data.references.trips,
     stop.data.references.routes,
   ))
-  |> list.map(timetable_line.to_string(_, server_time))
-  |> string.join("<br>")
+  |> list.map(timetable_line.to_html_ready(_, server_time))
 }
