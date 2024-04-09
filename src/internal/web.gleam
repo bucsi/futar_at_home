@@ -1,7 +1,10 @@
 import gleam/list
 import wisp
 import lustre/element
-import lustre/element/html.{html}
+import lustre/element/html.{
+  body, div, h1, head, html, link, main, meta, span, table, tbody, td, th, thead,
+  title, tr,
+}
 import lustre/attribute.{attribute}
 import internal/timetable_line.{type HtmlReadyTimetableLine}
 
@@ -23,65 +26,58 @@ fn static_directory() -> String {
 }
 
 pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
-  html.html([], [
-    html.head([], [
-      html.meta([attribute("charset", "utf-8")]),
-      html.meta([
+  html([], [
+    head([], [
+      meta([attribute("charset", "utf-8")]),
+      meta([
         attribute("name", "viewport"),
         attribute("content", "width=device-width, initial-scale=1"),
       ]),
-      html.link([
+      link([
         attribute("rel", "stylesheet"),
         attribute("href", "/static/style.css"),
       ]),
-      html.link([
-        attribute("rel", "icon"),
-        attribute("href", "/static/favicon.ico"),
-      ]),
-      html.title([], "Futár@home"),
+      link([attribute("rel", "icon"), attribute("href", "/static/favicon.ico")]),
+      title([], "Futár@home"),
     ]),
-    html.body([], [
-      html.h1([], [
+    body([], [
+      h1([], [
         element.text(
           "Mátyásföld, Rendőrség | Mátyásföld, Repülőtér H",
         ),
       ]),
-      html.main([], [
-        html.table([], [
-          html.thead([], [
-            html.tr([], [
-              html.th([], [element.text("Line")]),
-              html.th([], [element.text("Destination")]),
-              html.th([], [element.text("Departs")]),
+      main([], [
+        table([], [
+          thead([], [
+            tr([], [
+              th([], [element.text("Line")]),
+              th([], [element.text("Destination")]),
+              th([], [element.text("Departs")]),
             ]),
           ]),
-          html.tbody(
-            [],
-            lines
-              |> list.map(fn(line) {
-                html.tr([], [
-                  html.td([], [
-                    html.div(
-                      [
-                        attribute("class", "line-number"),
-                        attribute("style", "background-color: " <> line.color),
-                      ],
-                      [element.text(line.line)],
-                    ),
-                  ]),
-                  html.td([], [
-                    html.span([attribute("class", "destination-chevron")], [
-                      element.text("▶ "),
-                    ]),
-                    html.span([], [element.text(line.headsign)]),
-                  ]),
-                  html.td([], [element.text(line.departure)]),
-                ])
-              }),
-          ),
+          tbody([], list.map(lines, render_row)),
         ]),
       ]),
     ]),
   ])
   |> element.to_string_builder
+}
+
+fn render_row(line: HtmlReadyTimetableLine) {
+  tr([], [
+    td([], [
+      div(
+        [
+          attribute("class", "line-number"),
+          attribute("style", "background-color: " <> line.color),
+        ],
+        [element.text(line.line)],
+      ),
+    ]),
+    td([], [
+      span([attribute("class", "destination-chevron")], [element.text("▶ ")]),
+      span([], [element.text(line.headsign)]),
+    ]),
+    td([], [element.text(line.departure)]),
+  ])
 }
