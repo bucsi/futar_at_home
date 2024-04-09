@@ -1,5 +1,5 @@
 import gleam/io
-import gleam/json
+import gleam/json.{type DecodeError}
 import gleam/list
 import gleam/dict
 import gleam/option
@@ -24,14 +24,26 @@ pub fn main() {
     use resp <- promise.try_await(fetch.send(req))
     use resp <- promise.try_await(fetch.read_text_body(resp))
 
-    let assert Ok(stop) = json.decode(resp.body, stop.get_decoder())
-    let server_time = birl.from_unix(stop.current_time / 1000)
-
-    stop.data.entry.stop_times
-    |> list.map(timetable_line.from_stop_time(_, stop.data.references.trips))
-    |> list.map(timetable_line.print(_, server_time))
-
-    promise.resolve(Ok(Nil))
+    json.decode(resp.body, stop.get_decoder())
+    |> result.map(handle_stop_data)
+    |> result.map_error(fn(e) {
+      io.debug(e)
+      fetch.InvalidJsonBody
+    })
+    |> promise.resolve
   }
   Ok(Nil)
+}
+
+fn handle_stop_data(stop: stop.Response) {
+  let server_time = birl.from_unix(stop.current_time / 1000)
+
+  stop.data.entry.stop_times
+  |> list.map(timetable_line.from_stop_time(
+    _,
+    stop.data.references.trips,
+    stop.data.references.routes,
+  ))
+  |> list.map(timetable_line.to_string(_, server_time))
+  |> list.each(io.println)
 }

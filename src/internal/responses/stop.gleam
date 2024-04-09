@@ -97,7 +97,7 @@ fn get_stop_time_decoder() -> dynamic.Decoder(StopTime) {
 pub type References {
   References(
     agencies: Dict(String, dynamic.Dynamic),
-    routes: Dict(String, dynamic.Dynamic),
+    routes: Dict(String, Route),
     stops: Dict(String, dynamic.Dynamic),
     trips: Dict(String, Trip),
     alerts: Dict(String, dynamic.Dynamic),
@@ -108,7 +108,7 @@ pub fn get_references_decoder() -> dynamic.Decoder(References) {
   dynamic.decode5(
     References,
     dynamic.field("agencies", dynamic.dict(dynamic.string, dynamic.dynamic)),
-    dynamic.field("routes", dynamic.dict(dynamic.string, dynamic.dynamic)),
+    dynamic.field("routes", dynamic.dict(dynamic.string, get_route_decoder())),
     dynamic.field("stops", dynamic.dict(dynamic.string, dynamic.dynamic)),
     dynamic.field("trips", dynamic.dict(dynamic.string, get_trip_decoder())),
     dynamic.field("alerts", dynamic.dict(dynamic.string, dynamic.dynamic)),
@@ -133,5 +133,66 @@ pub fn get_trip_decoder() -> dynamic.Decoder(Trip) {
     dynamic.field("shapeId", dynamic.string),
     dynamic.field("tripHeadsign", dynamic.string),
     dynamic.field("serviceId", dynamic.string),
+  )
+}
+
+pub type Route {
+  Route(
+    id: String,
+    short_name: String,
+    kind: String,
+    color: String,
+    text_color: String,
+    style: Style,
+  )
+}
+
+fn get_route_decoder() -> dynamic.Decoder(Route) {
+  dynamic.decode6(
+    Route,
+    dynamic.field("id", dynamic.string),
+    dynamic.field("shortName", dynamic.string),
+    dynamic.field("type", dynamic.string),
+    dynamic.field("color", dynamic.string),
+    dynamic.field("textColor", dynamic.string),
+    dynamic.field("style", get_style_decoder()),
+  )
+}
+
+pub type Style {
+  Style(color: String, icon: Icon, vehicle_icon: VehicleIcon)
+}
+
+fn get_style_decoder() -> dynamic.Decoder(Style) {
+  dynamic.decode3(
+    Style,
+    dynamic.field("color", dynamic.string),
+    dynamic.field("icon", get_icon_decoder()),
+    dynamic.field("vehicleIcon", get_vehicle_icon_decoder()),
+  )
+}
+
+pub type Icon {
+  Icon(kind: String, text_color: String)
+}
+
+fn get_icon_decoder() -> dynamic.Decoder(Icon) {
+  dynamic.decode2(
+    Icon,
+    dynamic.field("type", dynamic.string),
+    dynamic.field("textColor", dynamic.string),
+  )
+}
+
+pub type VehicleIcon {
+  VehicleIcon(name: String, color: String, secondary_color: String)
+}
+
+fn get_vehicle_icon_decoder() -> dynamic.Decoder(VehicleIcon) {
+  dynamic.decode3(
+    VehicleIcon,
+    dynamic.field("name", dynamic.string),
+    dynamic.field("color", dynamic.string),
+    dynamic.field("secondaryColor", dynamic.string),
   )
 }

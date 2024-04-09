@@ -15,7 +15,7 @@ pub fn arrivals_and_departures_for_stop(
   |> append("&minResult=5")
   |> append("&appVersion=1.1.abc")
   |> append("&version=4")
-  |> append("&includeReferences=trips")
+  |> append("&includeReferences=compact")
   |> append("&key=" <> api_key)
   |> to_string()
 }
