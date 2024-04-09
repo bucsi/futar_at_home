@@ -17,7 +17,10 @@ pub fn main() {
   use api_key <- result.try(env.get("FUTAR_API_KEY"))
   {
     let assert Ok(req) =
-      request.to(bkk_url.arrivals_and_departures_for_stop("BKK_F03392", api_key))
+      request.to(bkk_url.arrivals_and_departures_for_stop(
+        ["BKK_F03392", "BKK_19824287"],
+        api_key,
+      ))
 
     use resp <- promise.try_await(fetch.send(req))
     use resp <- promise.try_await(fetch.read_text_body(resp))

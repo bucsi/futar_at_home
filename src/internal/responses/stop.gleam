@@ -185,14 +185,18 @@ fn get_icon_decoder() -> dynamic.Decoder(Icon) {
 }
 
 pub type VehicleIcon {
-  VehicleIcon(name: String, color: String, secondary_color: String)
+  VehicleIcon(
+    name: String,
+    color: Option(String),
+    secondary_color: Option(String),
+  )
 }
 
 fn get_vehicle_icon_decoder() -> dynamic.Decoder(VehicleIcon) {
   dynamic.decode3(
     VehicleIcon,
     dynamic.field("name", dynamic.string),
-    dynamic.field("color", dynamic.string),
-    dynamic.field("secondaryColor", dynamic.string),
+    dynamic.optional_field("color", dynamic.string),
+    dynamic.optional_field("secondaryColor", dynamic.string),
   )
 }
