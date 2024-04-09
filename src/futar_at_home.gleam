@@ -11,6 +11,7 @@ import gleam/fetch
 import gleam/http/request
 import gleam/javascript/promise
 import internal/bkk_url
+import internal/timetable_line
 import internal/responses/stop
 
 pub fn main() {
@@ -27,24 +28,8 @@ pub fn main() {
     let server_time = birl.from_unix(stop.current_time / 1000)
 
     stop.data.entry.stop_times
-    |> list.each(fn(bus) {
-      let trip_id = bus.trip_id
-
-      let assert Ok(route) =
-        stop.data.references.trips
-        |> dict.get(trip_id)
-
-      let departure =
-        option.unwrap(bus.predicted_departure_time, bus.departure_time)
-        |> birl.from_unix
-      io.print(
-        birl.legible_difference(server_time, departure)
-        <> " "
-        <> route.route_id
-        <> " ▶ ",
-      )
-      io.println(bus.stop_headsign)
-    })
+    |> list.map(timetable_line.from_stop_time(_, stop.data.references.trips))
+    |> list.map(timetable_line.print(_, server_time))
 
     promise.resolve(Ok(Nil))
   }
