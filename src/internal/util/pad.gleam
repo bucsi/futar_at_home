@@ -21,7 +21,9 @@ fn pad_left(string: String, desired_lenght: Int) {
 }
 
 fn pad_right(string: String, desired_lenght: Int) {
-  todo
+  let original_length = string.length(string)
+  let spaces_to_add = desired_lenght - original_length
+  string <> string.repeat(" ", spaces_to_add)
 }
 
 fn center(string: String, desired_lenght: Int) {
