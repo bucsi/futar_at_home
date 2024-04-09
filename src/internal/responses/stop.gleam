@@ -120,22 +120,18 @@ pub type Trip {
     id: String,
     route_id: String,
     shape_id: String,
-    block_id: String,
     trip_headsign: String,
     service_id: String,
-    direction_id: String,
   )
 }
 
 pub fn get_trip_decoder() -> dynamic.Decoder(Trip) {
-  dynamic.decode7(
+  dynamic.decode5(
     Trip,
     dynamic.field("id", dynamic.string),
     dynamic.field("routeId", dynamic.string),
     dynamic.field("shapeId", dynamic.string),
-    dynamic.field("blockId", dynamic.string),
     dynamic.field("tripHeadsign", dynamic.string),
     dynamic.field("serviceId", dynamic.string),
-    dynamic.field("directionId", dynamic.string),
   )
 }

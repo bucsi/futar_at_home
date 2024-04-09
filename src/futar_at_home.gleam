@@ -24,39 +24,27 @@ pub fn main() {
     use resp <- promise.try_await(fetch.read_text_body(resp))
 
     let assert Ok(stop) = json.decode(resp.body, stop.get_decoder())
-    let server_time =
-      stop.current_time / 1000
-      |> birl.from_unix
+    let server_time = birl.from_unix(stop.current_time / 1000)
 
-    io.println(
-      "Server time is: "
-      <> server_time
-      |> birl.to_naive_time_string,
-    )
+    stop.data.entry.stop_times
+    |> list.each(fn(bus) {
+      let trip_id = bus.trip_id
 
-    let assert Ok(first_departure) =
-      stop.data.entry.stop_times
-      |> list.at(0)
+      let assert Ok(route) =
+        stop.data.references.trips
+        |> dict.get(trip_id)
 
-    let trip_id = first_departure.trip_id
-
-    let assert Ok(route) =
-      stop.data.references.trips
-      |> dict.get(trip_id)
-
-    let departure =
-      option.unwrap(
-        first_departure.predicted_departure_time,
-        first_departure.departure_time,
+      let departure =
+        option.unwrap(bus.predicted_departure_time, bus.departure_time)
+        |> birl.from_unix
+      io.print(
+        birl.legible_difference(server_time, departure)
+        <> " "
+        <> route.route_id
+        <> " ▶ ",
       )
-      |> birl.from_unix
-    io.print(
-      birl.legible_difference(server_time, departure)
-      <> " "
-      <> route.route_id
-      <> " ▶ ",
-    )
-    io.println(first_departure.stop_headsign)
+      io.println(bus.stop_headsign)
+    })
 
     promise.resolve(Ok(Nil))
   }

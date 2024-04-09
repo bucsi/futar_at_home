@@ -10,6 +10,7 @@ pub fn arrivals_and_departures_for_stop(
   |> append("&stopId=" <> stop_id)
   |> append("&onlyDepartures=true")
   |> append("&minutesAfter=90")
+  |> append("&minutesBefore=0")
   |> append("&limit=5")
   |> append("&minResult=5")
   |> append("&appVersion=1.1.abc")
