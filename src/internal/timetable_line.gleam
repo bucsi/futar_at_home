@@ -1,9 +1,9 @@
 import gleam/dict
 import gleam/option
+import gleam/string
 import gleam/string_builder
 import birl
 import internal/responses/stop
-import internal/util/pad.{PadLeft, PadRight, pad}
 
 pub type TimetableLine {
   TimetableLine(
@@ -62,17 +62,17 @@ pub fn to_html_ready(timetable: TimetableLine, server_time: birl.Time) {
 
 pub fn to_string(timetable: TimetableLine, server_time: birl.Time) {
   string_builder.new()
-  |> string_builder.append(pad(
+  |> string_builder.append(string.pad_left(
     birl.legible_difference(server_time, timetable.departure),
-    PadLeft,
     13,
+    " ",
   ))
   |> string_builder.append(" ")
-  |> string_builder.append(pad(timetable.route.short_name, PadLeft, 4))
+  |> string_builder.append(string.pad_left(timetable.route.short_name, 4, ""))
   |> string_builder.append(" ▶ ")
-  |> string_builder.append(pad(timetable.headsign, PadRight, 40))
+  |> string_builder.append(string.pad_left(timetable.headsign, 40, " "))
   |> string_builder.append(" ")
-  |> string_builder.append(pad(timetable.route.kind, PadRight, 16))
+  |> string_builder.append(string.pad_left(timetable.route.kind, 1, ""))
   |> string_builder.append(" ")
   |> string_builder.append(timetable.route.color)
   |> string_builder.append(" ")
