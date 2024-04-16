@@ -53,6 +53,7 @@ pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
               th([], [element.text("Line")]),
               th([], [element.text("Destination")]),
               th([], [element.text("Departs")]),
+              th([], [element.text("")]),
             ]),
           ]),
           tbody([], list.map(lines, render_row)),
@@ -79,5 +80,14 @@ fn render_row(line: HtmlReadyTimetableLine) {
       span([], [element.text(line.headsign)]),
     ]),
     td([], [element.text(line.departure)]),
+    td([], [element.text(get_status(line.is_live, line.is_uncertain))]),
   ])
+}
+
+fn get_status(live: Bool, uncertain: Bool) -> String {
+  case live, uncertain {
+    _, True -> "delayed"
+    True, _ -> "live"
+    _, _ -> "planned"
+  }
 }

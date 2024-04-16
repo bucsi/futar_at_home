@@ -69,26 +69,24 @@ pub type StopTime {
   StopTime(
     stop_id: String,
     stop_headsign: String,
-    departure_time: Int,
+    departure_time: Option(Int),
     predicted_departure_time: Option(Int),
-    stop_sequence: Int,
+    uncertain: Option(Bool),
     trip_id: String,
-    service_date: String,
     wheelchair_accessible: Bool,
     alert_ids: List(String),
   )
 }
 
 fn get_stop_time_decoder() -> dynamic.Decoder(StopTime) {
-  dynamic.decode9(
+  dynamic.decode8(
     StopTime,
     dynamic.field("stopId", dynamic.string),
     dynamic.field("stopHeadsign", dynamic.string),
-    dynamic.field("departureTime", dynamic.int),
+    dynamic.optional_field("departureTime", dynamic.int),
     dynamic.optional_field("predictedDepartureTime", dynamic.int),
-    dynamic.field("stopSequence", dynamic.int),
+    dynamic.optional_field("uncertain", dynamic.bool),
     dynamic.field("tripId", dynamic.string),
-    dynamic.field("serviceDate", dynamic.string),
     dynamic.field("wheelchairAccessible", dynamic.bool),
     dynamic.field("alertIds", dynamic.list(dynamic.string)),
   )

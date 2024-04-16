@@ -1,5 +1,5 @@
 import gleam/dict
-import gleam/option
+import gleam/option.{None, Some}
 import gleam/string
 import gleam/string_builder
 import birl
@@ -8,6 +8,8 @@ import internal/responses/stop
 pub type TimetableLine {
   TimetableLine(
     departure: birl.Time,
+    is_live: Bool,
+    is_uncertain: Bool,
     line: String,
     headsign: String,
     route: stop.Route,
@@ -17,6 +19,8 @@ pub type TimetableLine {
 pub type HtmlReadyTimetableLine {
   HtmlReadyTimetableLine(
     departure: String,
+    is_live: Bool,
+    is_uncertain: Bool,
     line: String,
     headsign: String,
     color: String,
@@ -38,13 +42,21 @@ pub fn from_stop_time(
     routes
     |> dict.get(trip.route_id)
 
-  let departure =
-    bus.predicted_departure_time
-    |> option.unwrap(bus.departure_time)
-    |> birl.from_unix
+  let #(departure, live) = case bus.predicted_departure_time {
+    Some(time) -> {
+      #(birl.from_unix(time), True)
+    }
+    None -> {
+      let departure =
+        birl.from_unix(option.unwrap(bus.departure_time, birl.monotonic_now()))
+      #(departure, False)
+    }
+  }
 
   TimetableLine(
     departure: departure,
+    is_live: live,
+    is_uncertain: option.unwrap(bus.uncertain, False),
     line: trip.route_id,
     headsign: bus.stop_headsign,
     route: route,
@@ -54,6 +66,8 @@ pub fn from_stop_time(
 pub fn to_html_ready(timetable: TimetableLine, server_time: birl.Time) {
   HtmlReadyTimetableLine(
     departure: birl.legible_difference(server_time, timetable.departure),
+    is_live: timetable.is_live,
+    is_uncertain: timetable.is_uncertain,
     line: timetable.route.short_name,
     headsign: timetable.headsign,
     color: timetable.route.color,
