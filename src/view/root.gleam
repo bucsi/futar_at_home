@@ -7,10 +7,10 @@ import lustre/element/html.{
   title, tr,
 }
 
-import internal/timetable_line.{type HtmlReadyTimetableLine}
+import model/timetable
 import view/util
 
-pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
+pub fn template(timetable lines: List(timetable.Row)) {
   html([], [
     head([], [
       meta([attribute("charset", "utf-8")]),
@@ -50,23 +50,23 @@ pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
   |> element.to_string_builder
 }
 
-fn render_row(line: HtmlReadyTimetableLine) {
+fn render_row(row: timetable.Row) {
   tr([], [
     td([], [
       div(
         [
           attribute("class", "line-number"),
-          attribute("style", "background-color: " <> line.color),
+          attribute("style", "background-color: " <> row.color),
         ],
-        [element.text(line.line)],
+        [element.text(row.line)],
       ),
     ]),
     td([], [
       span([attribute("class", "destination-chevron")], [element.text("▶ ")]),
-      span([], [element.text(line.headsign)]),
+      span([], [element.text(row.headsign)]),
     ]),
-    td([], [element.text(line.departure)]),
-    td([], [get_status(line.is_live, line.is_uncertain)]),
+    td([], [element.text(row.departure)]),
+    td([], [get_status(row.is_live, row.is_uncertain)]),
   ])
 }
 
