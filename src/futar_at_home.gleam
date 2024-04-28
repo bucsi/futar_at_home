@@ -1,19 +1,22 @@
+import gleam/erlang/process
+import gleam/hackney
+import gleam/http/request
 import gleam/json
 import gleam/list
 import gleam/string
-import gleam/hackney
 import gleam/string_builder
-import gleam/http/request
-import gleam/erlang/process
+
 import birl
-import mist
-import wisp.{type Request, type Response}
 import dot_env
 import dot_env/env
-import internal/web
+import mist
+import wisp.{type Request, type Response}
+
 import internal/bkk_url
-import internal/timetable_line
 import internal/responses/stop
+import internal/timetable_line
+import internal/web
+import view/root
 
 pub fn main() {
   wisp.configure_logger()
@@ -45,7 +48,7 @@ pub fn handle_request(req: Request, api_key: String) -> Response {
     Ok(decoded) -> {
       decoded
       |> construct_timetables
-      |> web.template
+      |> root.template
       |> wisp.html_response(200)
     }
     Error(e) -> {
