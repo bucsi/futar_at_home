@@ -1,9 +1,9 @@
+import gleam/dict.{type Dict}
 import gleam/dynamic
 import gleam/option.{type Option}
-import gleam/dict.{type Dict}
 
-pub type Response {
-  Response(
+pub type ArrivalsAndDeparturesForStop {
+  ArrivalsAndDeparturesForStop(
     current_time: Int,
     version: Int,
     status: String,
@@ -13,9 +13,9 @@ pub type Response {
   )
 }
 
-pub fn get_decoder() -> dynamic.Decoder(Response) {
+pub fn get_decoder() -> dynamic.Decoder(ArrivalsAndDeparturesForStop) {
   dynamic.decode6(
-    Response,
+    ArrivalsAndDeparturesForStop,
     dynamic.field("currentTime", dynamic.int),
     dynamic.field("version", dynamic.int),
     dynamic.field("status", dynamic.string),

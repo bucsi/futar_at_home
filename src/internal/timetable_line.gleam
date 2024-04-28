@@ -2,8 +2,12 @@ import gleam/dict
 import gleam/option.{None, Some}
 import gleam/string
 import gleam/string_builder
+
 import birl
-import internal/responses/stop
+
+import model/response/arrivals_and_departures_for_stop.{
+  type ArrivalsAndDeparturesForStop, type Route, type StopTime, type Trip,
+}
 
 pub type TimetableLine {
   TimetableLine(
@@ -12,7 +16,7 @@ pub type TimetableLine {
     is_uncertain: Bool,
     line: String,
     headsign: String,
-    route: stop.Route,
+    route: Route,
   )
 }
 
@@ -28,9 +32,9 @@ pub type HtmlReadyTimetableLine {
 }
 
 pub fn from_stop_time(
-  bus: stop.StopTime,
-  trips: dict.Dict(String, stop.Trip),
-  routes: dict.Dict(String, stop.Route),
+  bus: StopTime,
+  trips: dict.Dict(String, Trip),
+  routes: dict.Dict(String, Route),
 ) {
   let trip_id = bus.trip_id
 

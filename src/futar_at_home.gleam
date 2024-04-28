@@ -13,9 +13,11 @@ import mist
 import wisp.{type Request, type Response}
 
 import internal/bkk_url
-import internal/responses/stop
 import internal/timetable_line
 import internal/web
+import model/response/arrivals_and_departures_for_stop.{
+  type ArrivalsAndDeparturesForStop,
+} as stop
 import view/root
 
 pub fn main() {
@@ -60,7 +62,7 @@ pub fn handle_request(req: Request, api_key: String) -> Response {
   }
 }
 
-fn construct_timetables(stop: stop.Response) {
+fn construct_timetables(stop: ArrivalsAndDeparturesForStop) {
   let server_time = birl.from_unix(stop.current_time / 1000)
 
   stop.data.entry.stop_times
