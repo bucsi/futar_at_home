@@ -1,11 +1,14 @@
 import gleam/list
-import internal/timetable_line.{type HtmlReadyTimetableLine}
+
 import lustre/attribute.{attribute}
 import lustre/element
 import lustre/element/html.{
   body, div, h1, head, html, link, main, meta, span, table, tbody, td, th, thead,
   title, tr,
 }
+
+import internal/timetable_line.{type HtmlReadyTimetableLine}
+import view/util
 
 pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
   html([], [
@@ -41,6 +44,7 @@ pub fn template(timetable lines: List(HtmlReadyTimetableLine)) {
           tbody([], list.map(lines, render_row)),
         ]),
       ]),
+      ..util.use_lucide()
     ]),
   ])
   |> element.to_string_builder
@@ -62,14 +66,14 @@ fn render_row(line: HtmlReadyTimetableLine) {
       span([], [element.text(line.headsign)]),
     ]),
     td([], [element.text(line.departure)]),
-    td([], [element.text(get_status(line.is_live, line.is_uncertain))]),
+    td([], [get_status(line.is_live, line.is_uncertain)]),
   ])
 }
 
-fn get_status(live: Bool, uncertain: Bool) -> String {
+fn get_status(live: Bool, uncertain: Bool) {
   case live, uncertain {
-    _, True -> "delayed"
-    True, _ -> "live"
-    _, _ -> "planned"
+    _, True -> util.lucide("hourglass")
+    True, _ -> util.lucide("radio")
+    _, _ -> util.lucide("calendar-clock")
   }
 }
