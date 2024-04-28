@@ -43,15 +43,6 @@ pub fn create_row(
     }
   }
 
-  // TimetableRow(
-  //   departure: departure,
-  //   is_live: live,
-  //   is_uncertain: option.unwrap(bus.uncertain, False),
-  //   line: trip.route_id,
-  //   headsign: bus.stop_headsign,
-  //   route: route,
-  // )
-
   Row(
     departure: birl.legible_difference(server_time, departure),
     is_live: live,
