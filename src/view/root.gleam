@@ -27,9 +27,7 @@ pub fn template(timetable lines: List(timetable.Row)) {
     ]),
     body([], [
       h1([], [
-        element.text(
-          "Jókai Mór utca, Rendőrség | Mátyásföld, Repülőtér H",
-        ),
+        element.text("Jókai Mór utca, Rendőrség | Mátyásföld, Repülőtér H"),
       ]),
       main([], [
         table([], [

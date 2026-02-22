@@ -11,7 +11,10 @@ import wisp/wisp_mist
 import controller/timetable
 import internal/web
 
-fn handle_request(req: Request(wisp.Connection), api_key: String) -> Response(wisp.Body)  {
+fn handle_request(
+  req: Request(wisp.Connection),
+  api_key: String,
+) -> Response(wisp.Body) {
   use req <- web.middleware(req)
 
   case wisp.path_segments(req) {
@@ -27,7 +30,7 @@ pub fn main() -> Nil {
   let secret_key_base = api_key
 
   let assert Ok(_) =
-  handle_request(_, api_key)
+    handle_request(_, api_key)
     |> wisp_mist.handler(secret_key_base)
     |> mist.new
     |> mist.port(8000)

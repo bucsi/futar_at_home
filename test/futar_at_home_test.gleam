@@ -2,14 +2,14 @@ import gleam/json
 import gleam/list
 import gleam/option
 
-import gleeunit
 import birdie
+import gleeunit
 import pprint
 import simplifile
 
-import view/root
-import model/timetable
 import model/response/arrivals_and_departures_for_stop as stop
+import model/timetable
+import view/root
 
 pub type TestError {
   FileError(simplifile.FileError)
