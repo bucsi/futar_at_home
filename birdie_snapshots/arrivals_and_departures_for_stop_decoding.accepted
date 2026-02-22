@@ -1,6 +1,6 @@
 ---
 version: 1.5.4
-title: arrivals_and_departures_for_stop_decoding.snap
+title: arrivals_and_departures_for_stop_decoding
 file: ./test/futar_at_home_test.gleam
 test_name: decode_test
 ---
