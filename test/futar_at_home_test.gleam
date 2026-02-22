@@ -31,6 +31,8 @@ pub fn decode_test() {
 
   stop
   |> to_string
+  |> birdie.snap("arrivals_and_departures_for_stop_decoding")
+}
 
 pub fn render_test() {
   get_all_combinations_for_timetable_row()
