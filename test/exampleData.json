@@ -1,0 +1,968 @@
+{
+    "currentTime": 1771782241230,
+    "version": 4,
+    "status": "OK",
+    "code": 200,
+    "text": "OK",
+    "data": {
+        "limitExceeded": true,
+        "entry": {
+            "stopId": "BKK_F03392",
+            "routeIds": [
+                "BKK_H8",
+                "BKK_H9",
+                "BKK_0440",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "volan_410",
+                "volan_411",
+                "volan_430",
+                "volan_440",
+                "volan_441"
+            ],
+            "alertIds": [],
+            "nearbyStopIds": [],
+            "stopTimes": [
+                {
+                    "stopId": "BKK_19824288",
+                    "stopHeadsign": "Örs vezér tere",
+                    "arrivalTime": 1771782360,
+                    "departureTime": 1771782360,
+                    "predictedArrivalTime": 1771782360,
+                    "predictedDepartureTime": 1771782360,
+                    "stopSequence": 16,
+                    "requiresFirstDoorBoarding": false,
+                    "tripId": "BKK_H100130_38",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": false,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_F03392",
+                    "stopHeadsign": "Rákosszentmihály vasútállomás",
+                    "arrivalTime": 1771782180,
+                    "departureTime": 1771782180,
+                    "predictedArrivalTime": 1771782493,
+                    "predictedDepartureTime": 1771782493,
+                    "stopSequence": 14,
+                    "requiresFirstDoorBoarding": true,
+                    "tripId": "BKK_D06266225",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": true,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_F03392",
+                    "stopHeadsign": "Örs vezér tere M+H",
+                    "arrivalTime": 1771782780,
+                    "departureTime": 1771782780,
+                    "predictedArrivalTime": 1771782809,
+                    "predictedDepartureTime": 1771782809,
+                    "stopSequence": 29,
+                    "requiresFirstDoorBoarding": true,
+                    "tripId": "BKK_D104665259",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": true,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_F03392",
+                    "stopHeadsign": "Örs vezér tere M+H",
+                    "arrivalTime": 1771782840,
+                    "departureTime": 1771782840,
+                    "predictedArrivalTime": 1771782840,
+                    "predictedDepartureTime": 1771782840,
+                    "stopSequence": 10,
+                    "requiresFirstDoorBoarding": true,
+                    "tripId": "BKK_D042292304",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": true,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_19824287",
+                    "stopHeadsign": "Csömör",
+                    "arrivalTime": 1771782960,
+                    "departureTime": 1771782960,
+                    "stopSequence": 5,
+                    "requiresFirstDoorBoarding": false,
+                    "tripId": "BKK_H151811_43",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": false,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_F03392",
+                    "stopHeadsign": "Rákosszentmihály vasútállomás",
+                    "arrivalTime": 1771783080,
+                    "departureTime": 1771783080,
+                    "predictedArrivalTime": 1771783080,
+                    "predictedDepartureTime": 1771783080,
+                    "stopSequence": 14,
+                    "requiresFirstDoorBoarding": true,
+                    "tripId": "BKK_D06266233",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": true,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                },
+                {
+                    "stopId": "BKK_19824288",
+                    "stopHeadsign": "Örs vezér tere",
+                    "arrivalTime": 1771783260,
+                    "departureTime": 1771783260,
+                    "stopSequence": 8,
+                    "requiresFirstDoorBoarding": false,
+                    "tripId": "BKK_H151113_44",
+                    "serviceDate": "20260222",
+                    "wheelchairAccessible": false,
+                    "mayRequireBooking": false,
+                    "canceled": false,
+                    "alertIds": [],
+                    "pickupAllowed": true,
+                    "dropOffAllowed": true
+                }
+            ]
+        },
+        "references": {
+            "agencies": {
+                "BKK_BKK": {
+                    "id": "BKK_BKK",
+                    "name": "BKK",
+                    "url": "http://www.bkk.hu",
+                    "timezone": "Europe/Budapest",
+                    "lang": "hu",
+                    "phone": "+36 1 3 255 255"
+                },
+                "volan_volan": {
+                    "id": "volan_volan",
+                    "name": "Volánbusz Zrt.",
+                    "url": "volanbusz.hu",
+                    "timezone": "Europe/Budapest"
+                },
+                "BKK_HEV": {
+                    "id": "BKK_HEV",
+                    "name": "MÁV Személyszállítási Zrt. - HÉV",
+                    "url": "https://mavcsoport.hu",
+                    "timezone": "Europe/Budapest",
+                    "lang": "hu",
+                    "phone": "+36 (1) 3 49 49 49"
+                }
+            },
+            "routes": {
+                "volan_411": {
+                    "id": "volan_411",
+                    "shortName": "411",
+                    "type": "COACH",
+                    "color": "F9AB13",
+                    "textColor": "000000",
+                    "agencyId": "volan_volan",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "411",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "F9AB13",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "411",
+                            "textColor": "000000"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "F9AB13",
+                            "secondaryColor": "000000"
+                        },
+                        "groupId": 9
+                    },
+                    "sortOrder": 542,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "volan_410": {
+                    "id": "volan_410",
+                    "shortName": "410",
+                    "type": "COACH",
+                    "color": "F9AB13",
+                    "textColor": "000000",
+                    "agencyId": "volan_volan",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "410",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "F9AB13",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "410",
+                            "textColor": "000000"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "F9AB13",
+                            "secondaryColor": "000000"
+                        },
+                        "groupId": 9
+                    },
+                    "sortOrder": 541,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "BKK_1460": {
+                    "id": "BKK_1460",
+                    "shortName": "146",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#146",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "146",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "146",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 218
+                },
+                "BKK_0440": {
+                    "id": "BKK_0440",
+                    "shortName": "44",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#44",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "44",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "44",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 121
+                },
+                "BKK_0460": {
+                    "id": "BKK_0460",
+                    "shortName": "46",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#46",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "46",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "46",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 123
+                },
+                "BKK_H8": {
+                    "id": "BKK_H8",
+                    "shortName": "H8",
+                    "type": "SUBURBAN_RAILWAY",
+                    "color": "ED6E86",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_HEV",
+                    "iconDisplayType": "CIRCLE",
+                    "iconDisplayText": "8",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "ED6E86",
+                        "stop": {
+                            "colors": [
+                                "777777"
+                            ],
+                            "image": "route-icon-H8"
+                        },
+                        "icon": {
+                            "type": "CIRCLE",
+                            "text": "8",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "suburban-railway"
+                        },
+                        "groupId": 2
+                    },
+                    "sortOrder": 7,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "BKK_0921": {
+                    "id": "BKK_0921",
+                    "shortName": "92A",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#92A",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "92A",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "92A",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 162
+                },
+                "BKK_0920": {
+                    "id": "BKK_0920",
+                    "shortName": "92",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#92",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "92",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "92",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 161
+                },
+                "BKK_H9": {
+                    "id": "BKK_H9",
+                    "shortName": "H9",
+                    "type": "SUBURBAN_RAILWAY",
+                    "color": "ED6E86",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_HEV",
+                    "iconDisplayType": "CIRCLE",
+                    "iconDisplayText": "9",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "ED6E86",
+                        "stop": {
+                            "colors": [
+                                "777777"
+                            ],
+                            "image": "route-icon-H9"
+                        },
+                        "icon": {
+                            "type": "CIRCLE",
+                            "text": "9",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "suburban-railway"
+                        },
+                        "groupId": 2
+                    },
+                    "sortOrder": 8,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "BKK_9081": {
+                    "id": "BKK_9081",
+                    "shortName": "908A",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#908A",
+                    "color": "000000",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "908A",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "000000",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "908A",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "night-bus",
+                            "color": "1E1E1E",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 6
+                    },
+                    "sortOrder": 364
+                },
+                "BKK_9080": {
+                    "id": "BKK_9080",
+                    "shortName": "908",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#908",
+                    "color": "000000",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "908",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "000000",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "908",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "night-bus",
+                            "color": "1E1E1E",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 6
+                    },
+                    "sortOrder": 363
+                },
+                "BKK_2765": {
+                    "id": "BKK_2765",
+                    "shortName": "276E",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#276E",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "276E",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "276E",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 323
+                },
+                "BKK_1765": {
+                    "id": "BKK_1765",
+                    "shortName": "176E",
+                    "type": "BUS",
+                    "url": "https://bkk.hu/menetrendek/#176E",
+                    "color": "009EE3",
+                    "textColor": "FFFFFF",
+                    "agencyId": "BKK_BKK",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "176E",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "009EE3",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "176E",
+                            "textColor": "FFFFFF"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "009EE3",
+                            "secondaryColor": "FFFFFF"
+                        },
+                        "groupId": 5
+                    },
+                    "sortOrder": 251
+                },
+                "volan_430": {
+                    "id": "volan_430",
+                    "shortName": "430",
+                    "type": "COACH",
+                    "color": "F9AB13",
+                    "textColor": "000000",
+                    "agencyId": "volan_volan",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "430",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "F9AB13",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "430",
+                            "textColor": "000000"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "F9AB13",
+                            "secondaryColor": "000000"
+                        },
+                        "groupId": 9
+                    },
+                    "sortOrder": 553,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "volan_441": {
+                    "id": "volan_441",
+                    "shortName": "441",
+                    "type": "COACH",
+                    "color": "F9AB13",
+                    "textColor": "000000",
+                    "agencyId": "volan_volan",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "441",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "F9AB13",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "441",
+                            "textColor": "000000"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "F9AB13",
+                            "secondaryColor": "000000"
+                        },
+                        "groupId": 9
+                    },
+                    "sortOrder": 564,
+                    "zoneId": "BKK_AGGLO"
+                },
+                "volan_440": {
+                    "id": "volan_440",
+                    "shortName": "440",
+                    "type": "COACH",
+                    "color": "F9AB13",
+                    "textColor": "000000",
+                    "agencyId": "volan_volan",
+                    "iconDisplayType": "BOX",
+                    "iconDisplayText": "440",
+                    "bikesAllowed": false,
+                    "style": {
+                        "color": "F9AB13",
+                        "icon": {
+                            "type": "BOX",
+                            "text": "440",
+                            "textColor": "000000"
+                        },
+                        "vehicleIcon": {
+                            "name": "bus",
+                            "color": "F9AB13",
+                            "secondaryColor": "000000"
+                        },
+                        "groupId": 9
+                    },
+                    "sortOrder": 563,
+                    "zoneId": "BKK_AGGLO"
+                }
+            },
+            "stops": {
+                "STOP_773581_2-F03392": {
+                    "id": "STOP_773581_2-F03392",
+                    "vertex": "BKK:STOP_773581_2-F03392",
+                    "lat": 47.510773,
+                    "lon": 19.189515,
+                    "name": "Jókai Mór utca (Rendőrség)",
+                    "localityName": "1165",
+                    "code": "773581_2-F03392",
+                    "direction": "-105",
+                    "description": "8041",
+                    "locationType": 1,
+                    "locationSubType": "stop",
+                    "parentStationId": "BKK_CSF03393",
+                    "wheelchairBoarding": true,
+                    "routeIds": [
+                        "BKK_0440",
+                        "BKK_0920",
+                        "BKK_0921",
+                        "BKK_1765",
+                        "BKK_2765",
+                        "BKK_9080",
+                        "volan_410",
+                        "volan_411",
+                        "volan_430",
+                        "volan_440",
+                        "volan_441"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "000000",
+                            "009EE3"
+                        ]
+                    }
+                },
+                "BKK_F03392": {
+                    "id": "BKK_F03392",
+                    "vertex": "BKK:BKK_F03392",
+                    "lat": 47.510773,
+                    "lon": 19.189515,
+                    "name": "Jókai Mór utca (Rendőrség)",
+                    "localityName": "1165",
+                    "code": "773581_2-F03392",
+                    "direction": "-105",
+                    "description": "8041",
+                    "locationType": 0,
+                    "locationSubType": "merged",
+                    "parentStationId": "STOP_773581_2-F03392",
+                    "type": "BUS",
+                    "wheelchairBoarding": true,
+                    "routeIds": [
+                        "BKK_0440",
+                        "BKK_0920",
+                        "BKK_0921",
+                        "BKK_1765",
+                        "BKK_2765",
+                        "BKK_9080",
+                        "volan_410",
+                        "volan_411",
+                        "volan_430",
+                        "volan_440",
+                        "volan_441"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "000000",
+                            "009EE3",
+                            "F9AB13"
+                        ]
+                    }
+                },
+                "BKK_CS19824": {
+                    "id": "BKK_CS19824",
+                    "vertex": "BKK:BKK_CS19824",
+                    "lat": 47.511658,
+                    "lon": 19.193817,
+                    "name": "Mátyásföld, repülőtér",
+                    "localityName": "1165",
+                    "code": "CS19824",
+                    "direction": "",
+                    "description": "mq~`HkzctBNNFTBZEXOt@KROLQ@QGKQs@aBGU?YBWHSNKNCNBbAl@",
+                    "locationType": 1,
+                    "locationSubType": "stop-area",
+                    "wheelchairBoarding": false,
+                    "routeIds": [
+                        "BKK_H8",
+                        "BKK_H9",
+                        "BKK_0440",
+                        "BKK_0460",
+                        "BKK_0920",
+                        "BKK_0921",
+                        "BKK_1460",
+                        "BKK_1765",
+                        "BKK_2765",
+                        "BKK_9080",
+                        "BKK_9081"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "000000",
+                            "009EE3",
+                            "ED6E86"
+                        ],
+                        "image": "stop-icon-H9"
+                    }
+                },
+                "BKK_CSF03393": {
+                    "id": "BKK_CSF03393",
+                    "vertex": "BKK:BKK_CSF03393",
+                    "lat": 47.510679,
+                    "lon": 19.190329,
+                    "name": "Jókai Mór utca (Rendőrség)",
+                    "localityName": "1163",
+                    "code": "CSF03393",
+                    "direction": "",
+                    "description": "}i~`HcectBJRDV?XEVsAzDKRQHOAQIKSEYYkH?YFWJONIP?NJlBlB",
+                    "locationType": 1,
+                    "locationSubType": "stop-area",
+                    "wheelchairBoarding": false,
+                    "routeIds": [
+                        "BKK_0440",
+                        "BKK_0460",
+                        "BKK_0920",
+                        "BKK_0921",
+                        "BKK_1460",
+                        "BKK_1765",
+                        "BKK_2765",
+                        "BKK_9080",
+                        "BKK_9081",
+                        "volan_410",
+                        "volan_411",
+                        "volan_430",
+                        "volan_440",
+                        "volan_441"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "000000",
+                            "009EE3",
+                            "F9AB13"
+                        ]
+                    }
+                },
+                "BKK_19824287": {
+                    "id": "BKK_19824287",
+                    "vertex": "BKK:BKK_19824",
+                    "lat": 47.511857,
+                    "lon": 19.194054,
+                    "name": "Mátyásföld, repülőtér",
+                    "localityName": "1165",
+                    "code": "19824",
+                    "direction": "",
+                    "locationType": 0,
+                    "locationSubType": "merged",
+                    "parentStationId": "BKK_19824",
+                    "type": "SUBURBAN_RAILWAY",
+                    "wheelchairBoarding": false,
+                    "routeIds": [
+                        "BKK_H8",
+                        "BKK_H9"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "ED6E86"
+                        ],
+                        "image": "stop-icon-H9"
+                    }
+                },
+                "BKK_19824288": {
+                    "id": "BKK_19824288",
+                    "vertex": "BKK:BKK_19824",
+                    "lat": 47.511857,
+                    "lon": 19.194054,
+                    "name": "Mátyásföld, repülőtér",
+                    "localityName": "1165",
+                    "code": "19824",
+                    "direction": "",
+                    "locationType": 0,
+                    "locationSubType": "merged",
+                    "parentStationId": "BKK_19824",
+                    "type": "SUBURBAN_RAILWAY",
+                    "wheelchairBoarding": false,
+                    "routeIds": [
+                        "BKK_H8",
+                        "BKK_H9"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "ED6E86"
+                        ],
+                        "image": "stop-icon-H9"
+                    }
+                },
+                "volan_773581_2": {
+                    "id": "volan_773581_2",
+                    "vertex": "BKK:volan_773581_2",
+                    "lat": 47.510773,
+                    "lon": 19.189515,
+                    "name": "Budapest, Jókai Mór utca (Rendőrség)",
+                    "localityName": "1165",
+                    "code": "773581_2-F03392",
+                    "direction": "-105",
+                    "locationType": 0,
+                    "locationSubType": "merged",
+                    "parentStationId": "STOP_773581_2-F03392",
+                    "type": "COACH",
+                    "wheelchairBoarding": true,
+                    "routeIds": [
+                        "BKK_0440",
+                        "BKK_0920",
+                        "BKK_0921",
+                        "BKK_1765",
+                        "BKK_2765",
+                        "BKK_9080",
+                        "volan_410",
+                        "volan_411",
+                        "volan_430",
+                        "volan_440",
+                        "volan_441"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "000000",
+                            "009EE3",
+                            "F9AB13"
+                        ]
+                    }
+                },
+                "BKK_19824": {
+                    "id": "BKK_19824",
+                    "vertex": "BKK:BKK_19824",
+                    "lat": 47.511857,
+                    "lon": 19.194054,
+                    "name": "Mátyásföld, repülőtér",
+                    "localityName": "1165",
+                    "code": "19824",
+                    "direction": "",
+                    "locationType": 1,
+                    "locationSubType": "station",
+                    "parentStationId": "BKK_CS19824",
+                    "wheelchairBoarding": false,
+                    "routeIds": [
+                        "BKK_H8",
+                        "BKK_H9"
+                    ],
+                    "stopColorType": "BUS",
+                    "style": {
+                        "colors": [
+                            "ED6E86"
+                        ],
+                        "image": "stop-icon-H9"
+                    }
+                }
+            },
+            "trips": {
+                "BKK_H151811_43": {
+                    "id": "BKK_H151811_43",
+                    "routeId": "BKK_H9",
+                    "shapeId": "BKK_H151811_43",
+                    "tripHeadsign": "Csömör",
+                    "serviceId": "BKK_63553",
+                    "directionId": "0",
+                    "bikesAllowed": true,
+                    "wheelchairAccessible": false,
+                    "firstDoorBoarding": "NONE"
+                },
+                "BKK_D104665259": {
+                    "id": "BKK_D104665259",
+                    "routeId": "BKK_2765",
+                    "shapeId": "BKK_D104665259",
+                    "blockId": "D10466_2765_1_11",
+                    "tripHeadsign": "Örs vezér tere M H",
+                    "serviceId": "BKK_D10466AVVNDO-021",
+                    "directionId": "1",
+                    "bikesAllowed": false,
+                    "wheelchairAccessible": true,
+                    "firstDoorBoarding": "ALWAYS"
+                },
+                "BKK_D06266233": {
+                    "id": "BKK_D06266233",
+                    "routeId": "BKK_0920",
+                    "shapeId": "BKK_D06266233",
+                    "blockId": "D06266_0920_4_7",
+                    "tripHeadsign": "Rákosszentmihály vasútáll.",
+                    "serviceId": "BKK_D06266AVVMAA-131",
+                    "directionId": "1",
+                    "bikesAllowed": false,
+                    "wheelchairAccessible": true,
+                    "firstDoorBoarding": "ALWAYS"
+                },
+                "BKK_H100130_38": {
+                    "id": "BKK_H100130_38",
+                    "routeId": "BKK_H8",
+                    "shapeId": "BKK_H100130_38",
+                    "tripHeadsign": "Örs vezér tere",
+                    "serviceId": "BKK_63553",
+                    "directionId": "1",
+                    "bikesAllowed": true,
+                    "wheelchairAccessible": false,
+                    "firstDoorBoarding": "NONE"
+                },
+                "BKK_D06266225": {
+                    "id": "BKK_D06266225",
+                    "routeId": "BKK_0920",
+                    "shapeId": "BKK_D06266225",
+                    "blockId": "D06266_0920_5_7",
+                    "tripHeadsign": "Rákosszentmihály vasútáll.",
+                    "serviceId": "BKK_D06266AVVMAA-131",
+                    "directionId": "1",
+                    "bikesAllowed": false,
+                    "wheelchairAccessible": true,
+                    "firstDoorBoarding": "ALWAYS"
+                },
+                "BKK_H151113_44": {
+                    "id": "BKK_H151113_44",
+                    "routeId": "BKK_H9",
+                    "shapeId": "BKK_H151113_44",
+                    "tripHeadsign": "Örs vezér tere",
+                    "serviceId": "BKK_63553",
+                    "directionId": "1",
+                    "bikesAllowed": true,
+                    "wheelchairAccessible": false,
+                    "firstDoorBoarding": "NONE"
+                },
+                "BKK_D042292304": {
+                    "id": "BKK_D042292304",
+                    "routeId": "BKK_0440",
+                    "shapeId": "BKK_D042292304",
+                    "blockId": "D04229_0440_5_11",
+                    "tripHeadsign": "Örs vezér tere M H",
+                    "serviceId": "BKK_D04229AVVNDO-021",
+                    "directionId": "1",
+                    "bikesAllowed": false,
+                    "wheelchairAccessible": true,
+                    "firstDoorBoarding": "ALWAYS"
+                }
+            },
+            "alerts": {}
+        },
+        "class": "entryWithReferences"
+    }
+}

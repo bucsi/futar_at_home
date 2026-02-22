@@ -1,0 +1,862 @@
+---
+version: 1.5.4
+title: arrivals_and_departures_for_stop_decoding.snap
+file: ./test/futar_at_home_test.gleam
+test_name: decode_test
+---
+ArrivalsAndDeparturesForStop(
+  1771782241230,
+  4,
+  "OK",
+  200,
+  "OK",
+  Data(
+    True,
+    Entry(
+      "BKK_F03392",
+      [
+        "BKK_H8",
+        "BKK_H9",
+        "BKK_0440",
+        "BKK_0920",
+        "BKK_0921",
+        "BKK_1765",
+        "BKK_2765",
+        "BKK_9080",
+        "volan_410",
+        "volan_411",
+        "volan_430",
+        "volan_440",
+        "volan_441",
+      ],
+      [],
+      [],
+      [
+        StopTime(
+          "BKK_19824288",
+          "Örs vezér tere",
+          Some(1771782360),
+          Some(1771782360),
+          None,
+          "BKK_H100130_38",
+          False,
+          [],
+        ),
+        StopTime(
+          "BKK_F03392",
+          "Rákosszentmihály vasútállomás",
+          Some(1771782180),
+          Some(1771782493),
+          None,
+          "BKK_D06266225",
+          True,
+          [],
+        ),
+        StopTime(
+          "BKK_F03392",
+          "Örs vezér tere M+H",
+          Some(1771782780),
+          Some(1771782809),
+          None,
+          "BKK_D104665259",
+          True,
+          [],
+        ),
+        StopTime(
+          "BKK_F03392",
+          "Örs vezér tere M+H",
+          Some(1771782840),
+          Some(1771782840),
+          None,
+          "BKK_D042292304",
+          True,
+          [],
+        ),
+        StopTime(
+          "BKK_19824287",
+          "Csömör",
+          Some(1771782960),
+          None,
+          None,
+          "BKK_H151811_43",
+          False,
+          [],
+        ),
+        StopTime(
+          "BKK_F03392",
+          "Rákosszentmihály vasútállomás",
+          Some(1771783080),
+          Some(1771783080),
+          None,
+          "BKK_D06266233",
+          True,
+          [],
+        ),
+        StopTime(
+          "BKK_19824288",
+          "Örs vezér tere",
+          Some(1771783260),
+          None,
+          None,
+          "BKK_H151113_44",
+          False,
+          [],
+        ),
+      ],
+    ),
+    References(
+      dict.from_list([
+        #(
+          "BKK_BKK",
+          dict.from_list([
+            #("id", "BKK_BKK"),
+            #("lang", "hu"),
+            #("name", "BKK"),
+            #(
+              "phone",
+              "+36 1 3 255 255",
+            ),
+            #(
+              "timezone",
+              "Europe/Budapest",
+            ),
+            #(
+              "url",
+              "http://www.bkk.hu",
+            ),
+          ]),
+        ),
+        #(
+          "BKK_HEV",
+          dict.from_list([
+            #("id", "BKK_HEV"),
+            #("lang", "hu"),
+            #(
+              "name",
+              "MÁV Személyszállítási Zrt. - HÉV",
+            ),
+            #(
+              "phone",
+              "+36 (1) 3 49 49 49",
+            ),
+            #(
+              "timezone",
+              "Europe/Budapest",
+            ),
+            #(
+              "url",
+              "https://mavcsoport.hu",
+            ),
+          ]),
+        ),
+        #(
+          "volan_volan",
+          dict.from_list([
+            #("id", "volan_volan"),
+            #("name", "Volánbusz Zrt."),
+            #(
+              "timezone",
+              "Europe/Budapest",
+            ),
+            #("url", "volanbusz.hu"),
+          ]),
+        ),
+      ]),
+      dict.from_list([
+        #(
+          "BKK_0440",
+          Route(
+            "BKK_0440",
+            "44",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_0460",
+          Route(
+            "BKK_0460",
+            "46",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_0920",
+          Route(
+            "BKK_0920",
+            "92",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_0921",
+          Route(
+            "BKK_0921",
+            "92A",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_1460",
+          Route(
+            "BKK_1460",
+            "146",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_1765",
+          Route(
+            "BKK_1765",
+            "176E",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_2765",
+          Route(
+            "BKK_2765",
+            "276E",
+            "BUS",
+            "009EE3",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_9080",
+          Route(
+            "BKK_9080",
+            "908",
+            "BUS",
+            "000000",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_9081",
+          Route(
+            "BKK_9081",
+            "908A",
+            "BUS",
+            "000000",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_H8",
+          Route(
+            "BKK_H8",
+            "H8",
+            "SUBURBAN_RAILWAY",
+            "ED6E86",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "BKK_H9",
+          Route(
+            "BKK_H9",
+            "H9",
+            "SUBURBAN_RAILWAY",
+            "ED6E86",
+            "FFFFFF",
+          ),
+        ),
+        #(
+          "volan_410",
+          Route(
+            "volan_410",
+            "410",
+            "COACH",
+            "F9AB13",
+            "000000",
+          ),
+        ),
+        #(
+          "volan_411",
+          Route(
+            "volan_411",
+            "411",
+            "COACH",
+            "F9AB13",
+            "000000",
+          ),
+        ),
+        #(
+          "volan_430",
+          Route(
+            "volan_430",
+            "430",
+            "COACH",
+            "F9AB13",
+            "000000",
+          ),
+        ),
+        #(
+          "volan_440",
+          Route(
+            "volan_440",
+            "440",
+            "COACH",
+            "F9AB13",
+            "000000",
+          ),
+        ),
+        #(
+          "volan_441",
+          Route(
+            "volan_441",
+            "441",
+            "COACH",
+            "F9AB13",
+            "000000",
+          ),
+        ),
+      ]),
+      dict.from_list([
+        #(
+          "BKK_19824",
+          dict.from_list([
+            #("code", "19824"),
+            #("direction", ""),
+            #("id", "BKK_19824"),
+            #("lat", 47.511857),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "station",
+            ),
+            #("locationType", 1),
+            #("lon", 19.194054),
+            #(
+              "name",
+              "Mátyásföld, repülőtér",
+            ),
+            #(
+              "parentStationId",
+              "BKK_CS19824",
+            ),
+            #(
+              "routeIds",
+              ["BKK_H8", "BKK_H9"],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #("colors", ["ED6E86"]),
+                #(
+                  "image",
+                  "stop-icon-H9",
+                ),
+              ]),
+            ),
+            #("vertex", "BKK:BKK_19824"),
+            #(
+              "wheelchairBoarding",
+              False,
+            ),
+          ]),
+        ),
+        #(
+          "BKK_19824287",
+          dict.from_list([
+            #("code", "19824"),
+            #("direction", ""),
+            #("id", "BKK_19824287"),
+            #("lat", 47.511857),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "merged",
+            ),
+            #("locationType", 0),
+            #("lon", 19.194054),
+            #(
+              "name",
+              "Mátyásföld, repülőtér",
+            ),
+            #(
+              "parentStationId",
+              "BKK_19824",
+            ),
+            #(
+              "routeIds",
+              ["BKK_H8", "BKK_H9"],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #("colors", ["ED6E86"]),
+                #(
+                  "image",
+                  "stop-icon-H9",
+                ),
+              ]),
+            ),
+            #(
+              "type",
+              "SUBURBAN_RAILWAY",
+            ),
+            #("vertex", "BKK:BKK_19824"),
+            #(
+              "wheelchairBoarding",
+              False,
+            ),
+          ]),
+        ),
+        #(
+          "BKK_19824288",
+          dict.from_list([
+            #("code", "19824"),
+            #("direction", ""),
+            #("id", "BKK_19824288"),
+            #("lat", 47.511857),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "merged",
+            ),
+            #("locationType", 0),
+            #("lon", 19.194054),
+            #(
+              "name",
+              "Mátyásföld, repülőtér",
+            ),
+            #(
+              "parentStationId",
+              "BKK_19824",
+            ),
+            #(
+              "routeIds",
+              ["BKK_H8", "BKK_H9"],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #("colors", ["ED6E86"]),
+                #(
+                  "image",
+                  "stop-icon-H9",
+                ),
+              ]),
+            ),
+            #(
+              "type",
+              "SUBURBAN_RAILWAY",
+            ),
+            #("vertex", "BKK:BKK_19824"),
+            #(
+              "wheelchairBoarding",
+              False,
+            ),
+          ]),
+        ),
+        #(
+          "BKK_CS19824",
+          dict.from_list([
+            #("code", "CS19824"),
+            #(
+              "description",
+              "mq~`HkzctBNNFTBZEXOt@KROLQ@QGKQs@aBGU?YBWHSNKNCNBbAl@",
+            ),
+            #("direction", ""),
+            #("id", "BKK_CS19824"),
+            #("lat", 47.511658),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "stop-area",
+            ),
+            #("locationType", 1),
+            #("lon", 19.193817),
+            #(
+              "name",
+              "Mátyásföld, repülőtér",
+            ),
+            #(
+              "routeIds",
+              [
+                "BKK_H8",
+                "BKK_H9",
+                "BKK_0440",
+                "BKK_0460",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1460",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "BKK_9081",
+              ],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #(
+                  "colors",
+                  [
+                    "000000",
+                    "009EE3",
+                    "ED6E86",
+                  ],
+                ),
+                #(
+                  "image",
+                  "stop-icon-H9",
+                ),
+              ]),
+            ),
+            #(
+              "vertex",
+              "BKK:BKK_CS19824",
+            ),
+            #(
+              "wheelchairBoarding",
+              False,
+            ),
+          ]),
+        ),
+        #(
+          "BKK_CSF03393",
+          dict.from_list([
+            #("code", "CSF03393"),
+            #(
+              "description",
+              "}i~`HcectBJRDV?XEVsAzDKRQHOAQIKSEYYkH?YFWJONIP?NJlBlB",
+            ),
+            #("direction", ""),
+            #("id", "BKK_CSF03393"),
+            #("lat", 47.510679),
+            #("localityName", "1163"),
+            #(
+              "locationSubType",
+              "stop-area",
+            ),
+            #("locationType", 1),
+            #("lon", 19.190329),
+            #(
+              "name",
+              "Jókai Mór utca (Rendőrség)",
+            ),
+            #(
+              "routeIds",
+              [
+                "BKK_0440",
+                "BKK_0460",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1460",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "BKK_9081",
+                "volan_410",
+                "volan_411",
+                "volan_430",
+                "volan_440",
+                "volan_441",
+              ],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #(
+                  "colors",
+                  [
+                    "000000",
+                    "009EE3",
+                    "F9AB13",
+                  ],
+                ),
+              ]),
+            ),
+            #(
+              "vertex",
+              "BKK:BKK_CSF03393",
+            ),
+            #(
+              "wheelchairBoarding",
+              False,
+            ),
+          ]),
+        ),
+        #(
+          "BKK_F03392",
+          dict.from_list([
+            #("code", "773581_2-F03392"),
+            #("description", "8041"),
+            #("direction", "-105"),
+            #("id", "BKK_F03392"),
+            #("lat", 47.510773),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "merged",
+            ),
+            #("locationType", 0),
+            #("lon", 19.189515),
+            #(
+              "name",
+              "Jókai Mór utca (Rendőrség)",
+            ),
+            #(
+              "parentStationId",
+              "STOP_773581_2-F03392",
+            ),
+            #(
+              "routeIds",
+              [
+                "BKK_0440",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "volan_410",
+                "volan_411",
+                "volan_430",
+                "volan_440",
+                "volan_441",
+              ],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #(
+                  "colors",
+                  [
+                    "000000",
+                    "009EE3",
+                    "F9AB13",
+                  ],
+                ),
+              ]),
+            ),
+            #("type", "BUS"),
+            #(
+              "vertex",
+              "BKK:BKK_F03392",
+            ),
+            #(
+              "wheelchairBoarding",
+              True,
+            ),
+          ]),
+        ),
+        #(
+          "STOP_773581_2-F03392",
+          dict.from_list([
+            #("code", "773581_2-F03392"),
+            #("description", "8041"),
+            #("direction", "-105"),
+            #(
+              "id",
+              "STOP_773581_2-F03392",
+            ),
+            #("lat", 47.510773),
+            #("localityName", "1165"),
+            #("locationSubType", "stop"),
+            #("locationType", 1),
+            #("lon", 19.189515),
+            #(
+              "name",
+              "Jókai Mór utca (Rendőrség)",
+            ),
+            #(
+              "parentStationId",
+              "BKK_CSF03393",
+            ),
+            #(
+              "routeIds",
+              [
+                "BKK_0440",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "volan_410",
+                "volan_411",
+                "volan_430",
+                "volan_440",
+                "volan_441",
+              ],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #(
+                  "colors",
+                  ["000000", "009EE3"],
+                ),
+              ]),
+            ),
+            #(
+              "vertex",
+              "BKK:STOP_773581_2-F03392",
+            ),
+            #(
+              "wheelchairBoarding",
+              True,
+            ),
+          ]),
+        ),
+        #(
+          "volan_773581_2",
+          dict.from_list([
+            #("code", "773581_2-F03392"),
+            #("direction", "-105"),
+            #("id", "volan_773581_2"),
+            #("lat", 47.510773),
+            #("localityName", "1165"),
+            #(
+              "locationSubType",
+              "merged",
+            ),
+            #("locationType", 0),
+            #("lon", 19.189515),
+            #(
+              "name",
+              "Budapest, Jókai Mór utca (Rendőrség)",
+            ),
+            #(
+              "parentStationId",
+              "STOP_773581_2-F03392",
+            ),
+            #(
+              "routeIds",
+              [
+                "BKK_0440",
+                "BKK_0920",
+                "BKK_0921",
+                "BKK_1765",
+                "BKK_2765",
+                "BKK_9080",
+                "volan_410",
+                "volan_411",
+                "volan_430",
+                "volan_440",
+                "volan_441",
+              ],
+            ),
+            #("stopColorType", "BUS"),
+            #(
+              "style",
+              dict.from_list([
+                #(
+                  "colors",
+                  [
+                    "000000",
+                    "009EE3",
+                    "F9AB13",
+                  ],
+                ),
+              ]),
+            ),
+            #("type", "COACH"),
+            #(
+              "vertex",
+              "BKK:volan_773581_2",
+            ),
+            #(
+              "wheelchairBoarding",
+              True,
+            ),
+          ]),
+        ),
+      ]),
+      dict.from_list([
+        #(
+          "BKK_D042292304",
+          Trip(
+            "BKK_D042292304",
+            "BKK_0440",
+            "BKK_D042292304",
+            "Örs vezér tere M H",
+            "BKK_D04229AVVNDO-021",
+          ),
+        ),
+        #(
+          "BKK_D06266225",
+          Trip(
+            "BKK_D06266225",
+            "BKK_0920",
+            "BKK_D06266225",
+            "Rákosszentmihály vasútáll.",
+            "BKK_D06266AVVMAA-131",
+          ),
+        ),
+        #(
+          "BKK_D06266233",
+          Trip(
+            "BKK_D06266233",
+            "BKK_0920",
+            "BKK_D06266233",
+            "Rákosszentmihály vasútáll.",
+            "BKK_D06266AVVMAA-131",
+          ),
+        ),
+        #(
+          "BKK_D104665259",
+          Trip(
+            "BKK_D104665259",
+            "BKK_2765",
+            "BKK_D104665259",
+            "Örs vezér tere M H",
+            "BKK_D10466AVVNDO-021",
+          ),
+        ),
+        #(
+          "BKK_H100130_38",
+          Trip(
+            "BKK_H100130_38",
+            "BKK_H8",
+            "BKK_H100130_38",
+            "Örs vezér tere",
+            "BKK_63553",
+          ),
+        ),
+        #(
+          "BKK_H151113_44",
+          Trip(
+            "BKK_H151113_44",
+            "BKK_H9",
+            "BKK_H151113_44",
+            "Örs vezér tere",
+            "BKK_63553",
+          ),
+        ),
+        #(
+          "BKK_H151811_43",
+          Trip(
+            "BKK_H151811_43",
+            "BKK_H9",
+            "BKK_H151811_43",
+            "Csömör",
+            "BKK_63553",
+          ),
+        ),
+      ]),
+      dict.from_list([]),
+    ),
+    "entryWithReferences",
+  ),
+)
