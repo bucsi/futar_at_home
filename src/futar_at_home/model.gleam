@@ -87,7 +87,7 @@ pub type StopTime {
     stop_headsign: String,
     departure_time: Option(Int),
     predicted_departure_time: Option(Int),
-    uncertain: Option(Bool),
+    uncertain: Bool,
     trip_id: String,
     wheelchair_accessible: Bool,
     alert_ids: List(String),
@@ -107,11 +107,7 @@ fn stop_time_decoder() -> decode.Decoder(StopTime) {
     option.None,
     decode.optional(decode.int),
   )
-  use uncertain <- decode.optional_field(
-    "uncertain",
-    option.None,
-    decode.optional(decode.bool),
-  )
+  use uncertain <- decode.optional_field("uncertain", False, decode.bool)
   use trip_id <- decode.field("tripId", decode.string)
   use wheelchair_accessible <- decode.field("wheelchairAccessible", decode.bool)
   use alert_ids <- decode.field("alertIds", decode.list(decode.string))
@@ -196,12 +192,17 @@ fn route_decoder() -> decode.Decoder(Route) {
 pub type TimetableRow {
   TimetableRow(
     departure: String,
-    is_live: Bool,
-    is_uncertain: Bool,
+    status: DepartureStatus,
     line: String,
     headsign: String,
     color: String,
   )
+}
+
+pub type DepartureStatus {
+  Live
+  Uncertain
+  Scheduled
 }
 
 pub fn timetable_row(
@@ -220,21 +221,21 @@ pub fn timetable_row(
     routes
     |> dict.get(trip.route_id)
 
-  let #(departure, live) = case bus.predicted_departure_time {
-    Some(time) -> {
-      #(birl.from_unix(time), True)
-    }
-    None -> {
-      let departure =
-        birl.from_unix(option.unwrap(bus.departure_time, birl.monotonic_now()))
-      #(departure, False)
-    }
+  let departure =
+    bus.predicted_departure_time
+    |> option.or(bus.departure_time)
+    |> option.unwrap(birl.monotonic_now())
+    |> birl.from_unix
+
+  let status = case bus.uncertain, bus.predicted_departure_time {
+    True, _ -> Uncertain
+    _, Some(_) -> Live
+    _, None -> Scheduled
   }
 
   TimetableRow(
     departure: birl.legible_difference(server_time, departure),
-    is_live: live,
-    is_uncertain: option.unwrap(bus.uncertain, False),
+    status: status,
     line: route.short_name,
     headsign: bus.stop_headsign,
     color: route.color,

@@ -1,3 +1,4 @@
+import gleam/string
 import gleam/json
 import gleam/list
 import gleam/option
@@ -35,18 +36,16 @@ pub fn decode_test() {
 
 pub fn render_test() {
   get_all_combinations_for_timetable_row()
-  |> list.flatten
   |> view.template
+  |> string.replace("<", "\n<")
   |> birdie.snap("rendering__timetable_rows")
 }
 
 fn get_all_combinations_for_timetable_row() {
-  use bool1 <- list.map([True, False])
-  use bool2 <- list.map([True, False])
+  use status <- list.map([model.Live, model.Uncertain, model.Scheduled])
   model.TimetableRow(
     departure: "in 5 minutes",
-    is_live: bool1,
-    is_uncertain: bool2,
+    status: status,
     line: "123",
     headsign: "Deploy",
     color: "#b00b50",

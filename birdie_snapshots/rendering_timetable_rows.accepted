@@ -4,4 +4,94 @@ title: rendering__timetable_rows
 file: ./test/futar_at_home_test.gleam
 test_name: render_test
 ---
-<html><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><link href="/static/style.css" rel="stylesheet"><link href="/static/favicon.ico" rel="icon"><title>Futár@home</title></head><body><h1>Jókai Mór utca, Rendőrség | Mátyásföld, Repülőtér H</h1><main><table><thead><tr><th>Line</th><th>Destination</th><th>Departs</th><th></th></tr></thead><tbody><tr><td><div class="line-number" style="background-color: #b00b50">123</div></td><td><span class="destination-chevron">▶ </span><span>Deploy</span></td><td>in 5 minutes</td><td><i data-lucide="hourglass"></i></td></tr><tr><td><div class="line-number" style="background-color: #b00b50">123</div></td><td><span class="destination-chevron">▶ </span><span>Deploy</span></td><td>in 5 minutes</td><td><i data-lucide="radio"></i></td></tr><tr><td><div class="line-number" style="background-color: #b00b50">123</div></td><td><span class="destination-chevron">▶ </span><span>Deploy</span></td><td>in 5 minutes</td><td><i data-lucide="hourglass"></i></td></tr><tr><td><div class="line-number" style="background-color: #b00b50">123</div></td><td><span class="destination-chevron">▶ </span><span>Deploy</span></td><td>in 5 minutes</td><td><i data-lucide="calendar-clock"></i></td></tr></tbody></table></main><script src="https://unpkg.com/lucide@latest"></script><script>lucide.createIcons()</script></body></html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="/static/style.css" rel="stylesheet">
+<link href="/static/favicon.ico" rel="icon">
+<title>Futár@home
+</title>
+</head>
+<body>
+<h1>Jókai Mór utca, Rendőrség | Mátyásföld, Repülőtér H
+</h1>
+<main>
+<table>
+<thead>
+<tr>
+<th>Line
+</th>
+<th>Destination
+</th>
+<th>Departs
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="line-number" style="background-color: #b00b50">123
+</div>
+</td>
+<td>
+<span class="destination-chevron">▶ 
+</span>
+<span>Deploy
+</span>
+</td>
+<td>in 5 minutes
+</td>
+<td>
+<i data-lucide="radio">
+</i>
+</td>
+</tr>
+<tr>
+<td>
+<div class="line-number" style="background-color: #b00b50">123
+</div>
+</td>
+<td>
+<span class="destination-chevron">▶ 
+</span>
+<span>Deploy
+</span>
+</td>
+<td>in 5 minutes
+</td>
+<td>
+<i data-lucide="hourglass">
+</i>
+</td>
+</tr>
+<tr>
+<td>
+<div class="line-number" style="background-color: #b00b50">123
+</div>
+</td>
+<td>
+<span class="destination-chevron">▶ 
+</span>
+<span>Deploy
+</span>
+</td>
+<td>in 5 minutes
+</td>
+<td>
+<i data-lucide="calendar-clock">
+</i>
+</td>
+</tr>
+</tbody>
+</table>
+</main>
+<script src="https://unpkg.com/lucide@latest">
+</script>
+<script>lucide.createIcons()
+</script>
+</body>
+</html>

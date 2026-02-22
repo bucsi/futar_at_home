@@ -85,15 +85,15 @@ fn render_row(row: model.TimetableRow) {
       span([], [text(row.headsign)]),
     ]),
     td([], [text(row.departure)]),
-    td([], [get_status(row.is_live, row.is_uncertain)]),
+    td([], [get_status(row.status)]),
   ])
 }
 
-fn get_status(live: Bool, uncertain: Bool) {
-  case live, uncertain {
-    _, True -> lucide("hourglass")
-    True, _ -> lucide("radio")
-    _, _ -> lucide("calendar-clock")
+fn get_status(status: model.DepartureStatus) {
+  case status {
+    model.Live -> lucide("radio")
+    model.Uncertain -> lucide("hourglass")
+    model.Scheduled -> lucide("calendar-clock")
   }
 }
 
