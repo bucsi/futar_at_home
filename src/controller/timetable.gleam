@@ -2,7 +2,6 @@ import gleam/http/request
 import gleam/json
 import gleam/list
 import gleam/string
-import gleam/string_builder
 
 import birl
 import gleam/hackney
@@ -15,7 +14,7 @@ import model/response/arrivals_and_departures_for_stop.{
 import model/timetable
 import view/root
 
-pub fn handle(request, api_key) {
+pub fn handle(_request, api_key) {
   let assert Ok(req) =
     request.to(bkk_url.arrivals_and_departures_for_stop(
       ["BKK_F03392", "BKK_19824287"],
@@ -24,7 +23,7 @@ pub fn handle(request, api_key) {
 
   let assert Ok(resp) = hackney.send(req)
 
-  case json.decode(resp.body, stop.get_decoder()) {
+  case json.parse(resp.body, stop.arrivals_and_departures_for_stop_decoder()) {
     Ok(decoded) -> {
       decoded
       |> construct_timetables
@@ -34,7 +33,6 @@ pub fn handle(request, api_key) {
     Error(e) -> {
       e
       |> string.inspect
-      |> string_builder.from_string
       |> wisp.html_response(500)
     }
   }

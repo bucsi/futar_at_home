@@ -47,7 +47,7 @@ pub fn template(timetable lines: List(timetable.Row)) {
       ..util.use_lucide()
     ]),
   ])
-  |> element.to_string_builder
+  |> element.to_string
 }
 
 fn render_row(row: timetable.Row) {

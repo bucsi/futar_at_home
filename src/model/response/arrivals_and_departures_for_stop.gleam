@@ -1,5 +1,6 @@
 import gleam/dict.{type Dict}
 import gleam/dynamic
+import gleam/dynamic/decode
 import gleam/option.{type Option}
 
 pub type ArrivalsAndDeparturesForStop {
@@ -13,16 +14,23 @@ pub type ArrivalsAndDeparturesForStop {
   )
 }
 
-pub fn get_decoder() -> dynamic.Decoder(ArrivalsAndDeparturesForStop) {
-  dynamic.decode6(
-    ArrivalsAndDeparturesForStop,
-    dynamic.field("currentTime", dynamic.int),
-    dynamic.field("version", dynamic.int),
-    dynamic.field("status", dynamic.string),
-    dynamic.field("code", dynamic.int),
-    dynamic.field("text", dynamic.string),
-    dynamic.field("data", get_data_decoder()),
-  )
+pub fn arrivals_and_departures_for_stop_decoder() -> decode.Decoder(
+  ArrivalsAndDeparturesForStop,
+) {
+  use current_time <- decode.field("currentTime", decode.int)
+  use version <- decode.field("version", decode.int)
+  use status <- decode.field("status", decode.string)
+  use code <- decode.field("code", decode.int)
+  use text <- decode.field("text", decode.string)
+  use data <- decode.field("data", data_decoder())
+  decode.success(ArrivalsAndDeparturesForStop(
+    current_time:,
+    version:,
+    status:,
+    code:,
+    text:,
+    data:,
+  ))
 }
 
 pub type Data {
@@ -34,14 +42,12 @@ pub type Data {
   )
 }
 
-fn get_data_decoder() -> dynamic.Decoder(Data) {
-  dynamic.decode4(
-    Data,
-    dynamic.field("limitExceeded", dynamic.bool),
-    dynamic.field("entry", get_entry_decoder()),
-    dynamic.field("references", get_references_decoder()),
-    dynamic.field("class", dynamic.string),
-  )
+fn data_decoder() -> decode.Decoder(Data) {
+  use limit_exceeded <- decode.field("limitExceeded", decode.bool)
+  use entry <- decode.field("entry", entry_decoder())
+  use references <- decode.field("references", references_decoder())
+  use class <- decode.field("class", decode.string)
+  decode.success(Data(limit_exceeded:, entry:, references:, class:))
 }
 
 pub type Entry {
@@ -54,15 +60,22 @@ pub type Entry {
   )
 }
 
-fn get_entry_decoder() -> dynamic.Decoder(Entry) {
-  dynamic.decode5(
-    Entry,
-    dynamic.field("stopId", dynamic.string),
-    dynamic.field("routeIds", dynamic.list(dynamic.string)),
-    dynamic.field("alertIds", dynamic.list(dynamic.string)),
-    dynamic.field("nearbyStopIds", dynamic.list(dynamic.string)),
-    dynamic.field("stopTimes", dynamic.list(get_stop_time_decoder())),
+fn entry_decoder() -> decode.Decoder(Entry) {
+  use stop_id <- decode.field("stopId", decode.string)
+  use route_ids <- decode.field("routeIds", decode.list(decode.string))
+  use alert_ids <- decode.field("alertIds", decode.list(decode.string))
+  use nearby_stop_ids <- decode.field(
+    "nearbyStopIds",
+    decode.list(decode.string),
   )
+  use stop_times <- decode.field("stopTimes", decode.list(stop_time_decoder()))
+  decode.success(Entry(
+    stop_id:,
+    route_ids:,
+    alert_ids:,
+    nearby_stop_ids:,
+    stop_times:,
+  ))
 }
 
 pub type StopTime {
@@ -78,18 +91,37 @@ pub type StopTime {
   )
 }
 
-fn get_stop_time_decoder() -> dynamic.Decoder(StopTime) {
-  dynamic.decode8(
-    StopTime,
-    dynamic.field("stopId", dynamic.string),
-    dynamic.field("stopHeadsign", dynamic.string),
-    dynamic.optional_field("departureTime", dynamic.int),
-    dynamic.optional_field("predictedDepartureTime", dynamic.int),
-    dynamic.optional_field("uncertain", dynamic.bool),
-    dynamic.field("tripId", dynamic.string),
-    dynamic.field("wheelchairAccessible", dynamic.bool),
-    dynamic.field("alertIds", dynamic.list(dynamic.string)),
+fn stop_time_decoder() -> decode.Decoder(StopTime) {
+  use stop_id <- decode.field("stopId", decode.string)
+  use stop_headsign <- decode.field("stopHeadsign", decode.string)
+  use departure_time <- decode.optional_field(
+    "departureTime",
+    option.None,
+    decode.optional(decode.int),
   )
+  use predicted_departure_time <- decode.optional_field(
+    "predictedDepartureTime",
+    option.None,
+    decode.optional(decode.int),
+  )
+  use uncertain <- decode.optional_field(
+    "uncertain",
+    option.None,
+    decode.optional(decode.bool),
+  )
+  use trip_id <- decode.field("tripId", decode.string)
+  use wheelchair_accessible <- decode.field("wheelchairAccessible", decode.bool)
+  use alert_ids <- decode.field("alertIds", decode.list(decode.string))
+  decode.success(StopTime(
+    stop_id:,
+    stop_headsign:,
+    departure_time:,
+    predicted_departure_time:,
+    uncertain:,
+    trip_id:,
+    wheelchair_accessible:,
+    alert_ids:,
+  ))
 }
 
 pub type References {
@@ -102,15 +134,22 @@ pub type References {
   )
 }
 
-pub fn get_references_decoder() -> dynamic.Decoder(References) {
-  dynamic.decode5(
-    References,
-    dynamic.field("agencies", dynamic.dict(dynamic.string, dynamic.dynamic)),
-    dynamic.field("routes", dynamic.dict(dynamic.string, get_route_decoder())),
-    dynamic.field("stops", dynamic.dict(dynamic.string, dynamic.dynamic)),
-    dynamic.field("trips", dynamic.dict(dynamic.string, get_trip_decoder())),
-    dynamic.field("alerts", dynamic.dict(dynamic.string, dynamic.dynamic)),
+fn references_decoder() -> decode.Decoder(References) {
+  use agencies <- decode.field(
+    "agencies",
+    decode.dict(decode.string, decode.dynamic),
   )
+  use routes <- decode.field(
+    "routes",
+    decode.dict(decode.string, route_decoder()),
+  )
+  use stops <- decode.field("stops", decode.dict(decode.string, decode.dynamic))
+  use trips <- decode.field("trips", decode.dict(decode.string, trip_decoder()))
+  use alerts <- decode.field(
+    "alerts",
+    decode.dict(decode.string, decode.dynamic),
+  )
+  decode.success(References(agencies:, routes:, stops:, trips:, alerts:))
 }
 
 pub type Trip {
@@ -123,15 +162,13 @@ pub type Trip {
   )
 }
 
-pub fn get_trip_decoder() -> dynamic.Decoder(Trip) {
-  dynamic.decode5(
-    Trip,
-    dynamic.field("id", dynamic.string),
-    dynamic.field("routeId", dynamic.string),
-    dynamic.field("shapeId", dynamic.string),
-    dynamic.field("tripHeadsign", dynamic.string),
-    dynamic.field("serviceId", dynamic.string),
-  )
+fn trip_decoder() -> decode.Decoder(Trip) {
+  use id <- decode.field("id", decode.string)
+  use route_id <- decode.field("routeId", decode.string)
+  use shape_id <- decode.field("shapeId", decode.string)
+  use trip_headsign <- decode.field("tripHeadsign", decode.string)
+  use service_id <- decode.field("serviceId", decode.string)
+  decode.success(Trip(id:, route_id:, shape_id:, trip_headsign:, service_id:))
 }
 
 pub type Route {
@@ -141,60 +178,14 @@ pub type Route {
     kind: String,
     color: String,
     text_color: String,
-    style: Style,
   )
 }
 
-fn get_route_decoder() -> dynamic.Decoder(Route) {
-  dynamic.decode6(
-    Route,
-    dynamic.field("id", dynamic.string),
-    dynamic.field("shortName", dynamic.string),
-    dynamic.field("type", dynamic.string),
-    dynamic.field("color", dynamic.string),
-    dynamic.field("textColor", dynamic.string),
-    dynamic.field("style", get_style_decoder()),
-  )
-}
-
-pub type Style {
-  Style(color: String, icon: Icon, vehicle_icon: VehicleIcon)
-}
-
-fn get_style_decoder() -> dynamic.Decoder(Style) {
-  dynamic.decode3(
-    Style,
-    dynamic.field("color", dynamic.string),
-    dynamic.field("icon", get_icon_decoder()),
-    dynamic.field("vehicleIcon", get_vehicle_icon_decoder()),
-  )
-}
-
-pub type Icon {
-  Icon(kind: String, text_color: String)
-}
-
-fn get_icon_decoder() -> dynamic.Decoder(Icon) {
-  dynamic.decode2(
-    Icon,
-    dynamic.field("type", dynamic.string),
-    dynamic.field("textColor", dynamic.string),
-  )
-}
-
-pub type VehicleIcon {
-  VehicleIcon(
-    name: String,
-    color: Option(String),
-    secondary_color: Option(String),
-  )
-}
-
-fn get_vehicle_icon_decoder() -> dynamic.Decoder(VehicleIcon) {
-  dynamic.decode3(
-    VehicleIcon,
-    dynamic.field("name", dynamic.string),
-    dynamic.optional_field("color", dynamic.string),
-    dynamic.optional_field("secondaryColor", dynamic.string),
-  )
+fn route_decoder() -> decode.Decoder(Route) {
+  use id <- decode.field("id", decode.string)
+  use short_name <- decode.field("shortName", decode.string)
+  use kind <- decode.field("type", decode.string)
+  use color <- decode.field("color", decode.string)
+  use text_color <- decode.field("textColor", decode.string)
+  decode.success(Route(id:, short_name:, kind:, color:, text_color:))
 }
