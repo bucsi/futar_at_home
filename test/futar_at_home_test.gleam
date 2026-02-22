@@ -1,7 +1,7 @@
-import gleam/string
 import gleam/json
 import gleam/list
 import gleam/option
+import gleam/string
 
 import birdie
 import gleeunit
