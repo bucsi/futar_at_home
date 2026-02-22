@@ -7,9 +7,8 @@ import gleeunit
 import pprint
 import simplifile
 
-import model/response/arrivals_and_departures_for_stop as stop
-import model/timetable
-import view/root
+import futar_at_home/model
+import futar_at_home/view
 
 pub type TestError {
   FileError(simplifile.FileError)
@@ -27,7 +26,7 @@ pub type Alma {
 pub fn decode_test() {
   let assert Ok(json) = simplifile.read("test/exampleData.json")
   let assert Ok(stop) =
-    json |> json.parse(stop.arrivals_and_departures_for_stop_decoder())
+    json |> json.parse(model.arrivals_and_departures_for_stop_decoder())
 
   stop
   |> to_string
@@ -37,14 +36,14 @@ pub fn decode_test() {
 pub fn render_test() {
   get_all_combinations_for_timetable_row()
   |> list.flatten
-  |> root.template
+  |> view.template
   |> birdie.snap("rendering__timetable_rows")
 }
 
 fn get_all_combinations_for_timetable_row() {
   use bool1 <- list.map([True, False])
   use bool2 <- list.map([True, False])
-  timetable.Row(
+  model.TimetableRow(
     departure: "in 5 minutes",
     is_live: bool1,
     is_uncertain: bool2,

@@ -1,7 +1,10 @@
 import gleam/dict.{type Dict}
+import gleam/option.{type Option, None, Some}
+
+import birl
+
 import gleam/dynamic
 import gleam/dynamic/decode
-import gleam/option.{type Option}
 
 pub type ArrivalsAndDeparturesForStop {
   ArrivalsAndDeparturesForStop(
@@ -188,4 +191,52 @@ fn route_decoder() -> decode.Decoder(Route) {
   use color <- decode.field("color", decode.string)
   use text_color <- decode.field("textColor", decode.string)
   decode.success(Route(id:, short_name:, kind:, color:, text_color:))
+}
+
+pub type TimetableRow {
+  TimetableRow(
+    departure: String,
+    is_live: Bool,
+    is_uncertain: Bool,
+    line: String,
+    headsign: String,
+    color: String,
+  )
+}
+
+pub fn timetable_row(
+  bus: StopTime,
+  trips: dict.Dict(String, Trip),
+  routes: dict.Dict(String, Route),
+  server_time: birl.Time,
+) {
+  let trip_id = bus.trip_id
+
+  let assert Ok(trip) =
+    trips
+    |> dict.get(trip_id)
+
+  let assert Ok(route) =
+    routes
+    |> dict.get(trip.route_id)
+
+  let #(departure, live) = case bus.predicted_departure_time {
+    Some(time) -> {
+      #(birl.from_unix(time), True)
+    }
+    None -> {
+      let departure =
+        birl.from_unix(option.unwrap(bus.departure_time, birl.monotonic_now()))
+      #(departure, False)
+    }
+  }
+
+  TimetableRow(
+    departure: birl.legible_difference(server_time, departure),
+    is_live: live,
+    is_uncertain: option.unwrap(bus.uncertain, False),
+    line: route.short_name,
+    headsign: bus.stop_headsign,
+    color: route.color,
+  )
 }

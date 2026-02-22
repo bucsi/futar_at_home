@@ -1,27 +1,15 @@
-import gleam/erlang/process
-import gleam/http/request.{type Request}
-import gleam/http/response.{type Response}
-
 import dot_env
 import dot_env/env
+import gleam/erlang/process
 import mist
 import wisp
 import wisp/wisp_mist
 
-import controller/timetable
-import internal/web
+import futar_at_home/controller
 
-fn handle_request(
-  req: Request(wisp.Connection),
-  api_key: String,
-) -> Response(wisp.Body) {
-  use req <- web.middleware(req)
+const jokai_mor_utca_rendorseg = "BKK_F03392"
 
-  case wisp.path_segments(req) {
-    [] -> timetable.handle(req, api_key)
-    _ -> wisp.not_found()
-  }
-}
+const matyasfold_repuloter_h = "BKK_19824287"
 
 pub fn main() -> Nil {
   wisp.configure_logger()
@@ -30,11 +18,28 @@ pub fn main() -> Nil {
   let secret_key_base = api_key
 
   let assert Ok(_) =
-    handle_request(_, api_key)
+    fn(request) {
+      use <- wisp.log_request(request)
+      use <- wisp.rescue_crashes
+      use <- wisp.serve_static(request, "/static", static_directory())
+      use request <- wisp.handle_head(request)
+
+      case request |> wisp.path_segments {
+        [] ->
+          [jokai_mor_utca_rendorseg, matyasfold_repuloter_h]
+          |> controller.render_timetable_for_stops(api_key)
+        _ -> wisp.not_found()
+      }
+    }
     |> wisp_mist.handler(secret_key_base)
     |> mist.new
     |> mist.port(8000)
     |> mist.start
 
   process.sleep_forever()
+}
+
+fn static_directory() -> String {
+  let assert Ok(priv_directory) = wisp.priv_directory("futar_at_home")
+  priv_directory <> "/static"
 }
