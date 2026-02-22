@@ -1,11 +1,14 @@
-import birdie
 import gleam/json
+import gleam/list
 import gleam/option
-import gleam/result
+
 import gleeunit
+import birdie
 import pprint
 import simplifile
 
+import view/root
+import model/timetable
 import model/response/arrivals_and_departures_for_stop as stop
 
 pub type TestError {
@@ -28,7 +31,25 @@ pub fn decode_test() {
 
   stop
   |> to_string
-  |> birdie.snap("arrivals_and_departures_for_stop_decoding.snap")
+
+pub fn render_test() {
+  get_all_combinations_for_timetable_row()
+  |> list.flatten
+  |> root.template
+  |> birdie.snap("rendering__timetable_rows")
+}
+
+fn get_all_combinations_for_timetable_row() {
+  use bool1 <- list.map([True, False])
+  use bool2 <- list.map([True, False])
+  timetable.Row(
+    departure: "in 5 minutes",
+    is_live: bool1,
+    is_uncertain: bool2,
+    line: "123",
+    headsign: "Deploy",
+    color: "#b00b50",
+  )
 }
 
 fn to_string(any: a) -> String {
