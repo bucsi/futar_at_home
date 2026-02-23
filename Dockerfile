@@ -11,6 +11,7 @@ FROM erlang:alpine AS runtime
 WORKDIR /app
 
 COPY --from=builder /out /app
+COPY priv /app/priv
 
 RUN chmod +x /app/entrypoint.sh
 
