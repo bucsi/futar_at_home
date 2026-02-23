@@ -29,12 +29,12 @@ const godollo_szabadsag_ter_h = model.Stop(
 
 const ors_vezer_tere_m_h = model.Stop(
   id: "BKK_009322",
-  name: "Őrs vezér tere M+H",
+  name: "Örs vezér tere M+H",
 )
 
 const ors_vezer_tere_h = model.Stop(
   id: "BKK_19795278",
-  name: "Őrs vezér tere M+H",
+  name: "Örs vezér tere M+H",
 )
 
 pub fn matyasfold_rendorseg(api_key: String) -> Response(wisp.Body) {
