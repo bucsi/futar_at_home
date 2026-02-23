@@ -5,8 +5,8 @@ import gleam/string
 import lustre/attribute.{attribute}
 import lustre/element
 import lustre/element/html.{
-  body, code, div, h1, head, html, link, main, meta, p, pre, span, table, tbody,
-  td, text, th, thead, title, tr,
+  a, body, code, div, footer, h1, head, html, li, link, main, meta, nav, p, pre,
+  span, table, tbody, td, text, th, thead, title, tr, ul,
 }
 
 import futar_at_home/model
@@ -50,7 +50,23 @@ pub fn template(
           tbody([], list.map(lines, render_row)),
         ]),
       ]),
-      ..use_lucide()
+      footer([], [
+        nav([], [
+          ul(
+            [],
+            [
+              #("Mátyásföld", "matyasfold-rendorseg"),
+              #("Örs vezér tere", "ors"),
+              #("Gödöllő", "godollo-szabadsag-ter"),
+            ]
+              |> list.map(fn(menuitem) {
+                let #(name, path) = menuitem
+                li([], [a([attribute("href", "/" <> path)], [text(name)])])
+              }),
+          ),
+        ]),
+        ..use_lucide()
+      ]),
     ]),
   ])
   |> element.to_string

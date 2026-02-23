@@ -1,43 +1,106 @@
-@import url('https://fonts.cdnfonts.com/css/frutiger');
-h1 {
-    width: 100%;
-    margin: 1em;
-    text-align: center;
-}
+@import url("https://fonts.cdnfonts.com/css/frutiger");
+
+html,
 body {
-    margin:0;
-    padding: 0;
-    font-family: 'Frutiger', sans-serif;
-    background-color: #2D2D5D;
-    color: #F2F2F2;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
-table{
-    border-collapse: collapse;
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Frutiger", sans-serif;
+  background-color: #2d2d5d;
+  color: #f2f2f2;
+  overflow: hidden;
+
+  & h1 {
     width: 100%;
-    font-size: 1.5em;
-}
-
-tr {
-    height: 2.5em;
-}
-
-th, tr:nth-of-type(even) {
-    background-color: #454E99;
-}
-
-th, td {
+    padding: 0.3em;
+    margin: 0;
     text-align: center;
+    box-sizing: border-box;
+    font-size: 1.5em;
+  }
+
+  & main {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 0;
+  }
+
+  & a {
+    color: #f2f2f2;
+    text-decoration: none;
+  }
+
+  & footer {
+    & nav ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 1em;
+      list-style: none;
+      margin: 0;
+      padding: 1em;
+      background-color: #2d2d5d;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      box-sizing: border-box;
+
+      & li {
+        flex: 1;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+
+        &::before {
+          content: "◉";
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.2em;
+
+  & tr {
+    height: 2.5em;
+
+    &:nth-of-type(even),
+    & th {
+      background-color: #454e99;
+    }
+  }
+
+  & th,
+  & td {
+    text-align: center;
+  }
+
+  & td:nth-of-type(2) {
+    text-align: left;
+    padding-left: 1em;
+  }
 }
 
 .line-number {
-    border-radius: 5px;
-    background-color: attr(data-color);
-    width: 4ch;
-    padding: 8px;
-    display: inline-block;
+  border-radius: 5px;
+  background-color: attr(data-color);
+  width: 4ch;
+  padding: 8px;
+  display: inline-block;
 }
 
 .destination-chevron {
-    font-size: .7em;
-    margin-right: .5em;
+  font-size: 0.7em;
+  margin-right: 0.5em;
 }
