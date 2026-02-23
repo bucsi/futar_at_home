@@ -104,12 +104,23 @@ fn render_row(row: model.TimetableRow) {
       ),
     ]),
     td([], [
-      span([attribute("class", "destination-chevron")], [text("▶ ")]),
-      span([], [text(row.headsign)]),
+      destination_chevron(),
+      ..{
+        row.headsign
+        |> string.split("►")
+        |> list.map(fn(destination) {
+          span([], [text(destination |> string.trim)])
+        })
+        |> list.intersperse(destination_chevron())
+      }
     ]),
     td([], [text(row.departure)]),
     td([], [get_status(row.status)]),
   ])
+}
+
+fn destination_chevron() -> element.Element(a) {
+  span([attribute("class", "destination-chevron")], [text("▶ ")])
 }
 
 fn get_status(status: model.DepartureStatus) {
