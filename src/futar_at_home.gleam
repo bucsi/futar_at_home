@@ -22,6 +22,7 @@ pub fn main() -> Nil {
 
       case request |> wisp.path_segments {
         [] -> controller.matyasfold_rendorseg(api_key)
+        ["ors"] -> controller.ors_vezer_tere(api_key)
         ["godollo-szabadsag-ter"] -> controller.godollo_szabadsag_ter(api_key)
         _ -> wisp.not_found()
       }

@@ -30,7 +30,13 @@ pub fn template(
       title([], "Futár@home"),
     ]),
     body([], [
-      h1([], [stops |> list.map(fn(s) { s.name }) |> string.join(" | ") |> text]),
+      h1([], [
+        stops
+        |> list.map(fn(s) { s.name })
+        |> list.unique
+        |> string.join(" | ")
+        |> text,
+      ]),
       main([], [
         table([], [
           thead([], [
