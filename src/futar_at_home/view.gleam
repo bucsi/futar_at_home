@@ -65,8 +65,8 @@ pub fn template(
               }),
           ),
         ]),
-        ..use_lucide()
       ]),
+      ..use_lucide()
     ]),
   ])
   |> element.to_string

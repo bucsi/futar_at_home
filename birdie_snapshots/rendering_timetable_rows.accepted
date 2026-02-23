@@ -89,6 +89,24 @@ test_name: render_test
 </tbody>
 </table>
 </main>
+<footer>
+<nav>
+<ul>
+<li>
+<a href="/matyasfold-rendorseg">Mátyásföld
+</a>
+</li>
+<li>
+<a href="/ors">Örs vezér tere
+</a>
+</li>
+<li>
+<a href="/godollo-szabadsag-ter">Gödöllő
+</a>
+</li>
+</ul>
+</nav>
+</footer>
 <script src="https://unpkg.com/lucide@latest">
 </script>
 <script>lucide.createIcons()
