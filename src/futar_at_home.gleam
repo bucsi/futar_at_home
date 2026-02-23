@@ -7,10 +7,6 @@ import wisp/wisp_mist
 
 import futar_at_home/controller
 
-const jokai_mor_utca_rendorseg = "BKK_F03392"
-
-const matyasfold_repuloter_h = "BKK_19824287"
-
 pub fn main() -> Nil {
   wisp.configure_logger()
   dot_env.load_default()
@@ -25,9 +21,8 @@ pub fn main() -> Nil {
       use request <- wisp.handle_head(request)
 
       case request |> wisp.path_segments {
-        [] ->
-          [jokai_mor_utca_rendorseg, matyasfold_repuloter_h]
-          |> controller.render_timetable_for_stops(api_key)
+        [] -> controller.matyasfold_rendorseg(api_key)
+        ["godollo-szabadsag-ter"] -> controller.godollo_szabadsag_ter(api_key)
         _ -> wisp.not_found()
       }
     }

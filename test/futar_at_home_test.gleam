@@ -36,7 +36,10 @@ pub fn decode_test() {
 
 pub fn render_test() {
   get_all_combinations_for_timetable_row()
-  |> view.template
+  |> view.template([
+    model.Stop(id: "1", name: "Stop 1"),
+    model.Stop(id: "2", name: "Stop 2"),
+  ])
   |> string.replace("<", "\n<")
   |> birdie.snap("rendering__timetable_rows")
 }

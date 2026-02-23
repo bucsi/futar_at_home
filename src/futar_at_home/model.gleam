@@ -83,7 +83,7 @@ fn entry_decoder() -> decode.Decoder(Entry) {
 
 pub type StopTime {
   StopTime(
-    stop_id: String,
+    stop_id: Option(String),
     stop_headsign: String,
     departure_time: Option(Int),
     predicted_departure_time: Option(Int),
@@ -95,7 +95,11 @@ pub type StopTime {
 }
 
 fn stop_time_decoder() -> decode.Decoder(StopTime) {
-  use stop_id <- decode.field("stopId", decode.string)
+  use stop_id <- decode.optional_field(
+    "stopId",
+    None,
+    decode.optional(decode.string),
+  )
   use stop_headsign <- decode.field("stopHeadsign", decode.string)
   use departure_time <- decode.optional_field(
     "departureTime",
@@ -240,4 +244,8 @@ pub fn timetable_row(
     headsign: bus.stop_headsign,
     color: route.color,
   )
+}
+
+pub type Stop {
+  Stop(id: String, name: String)
 }

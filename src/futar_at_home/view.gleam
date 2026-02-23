@@ -11,7 +11,10 @@ import lustre/element/html.{
 
 import futar_at_home/model
 
-pub fn template(timetable lines: List(model.TimetableRow)) {
+pub fn template(
+  timetable lines: List(model.TimetableRow),
+  stops stops: List(model.Stop),
+) -> String {
   html([], [
     head([], [
       meta([attribute("charset", "utf-8")]),
@@ -27,9 +30,7 @@ pub fn template(timetable lines: List(model.TimetableRow)) {
       title([], "Futár@home"),
     ]),
     body([], [
-      h1([], [
-        text("Jókai Mór utca, Rendőrség | Mátyásföld, Repülőtér H"),
-      ]),
+      h1([], [stops |> list.map(fn(s) { s.name }) |> string.join(" | ") |> text]),
       main([], [
         table([], [
           thead([], [

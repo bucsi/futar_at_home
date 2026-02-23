@@ -33,7 +33,7 @@ ArrivalsAndDeparturesForStop(
       [],
       [
         StopTime(
-          "BKK_19824288",
+          Some("BKK_19824288"),
           "Örs vezér tere",
           Some(1771782360),
           Some(1771782360),
@@ -43,7 +43,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_F03392",
+          Some("BKK_F03392"),
           "Rákosszentmihály vasútállomás",
           Some(1771782180),
           Some(1771782493),
@@ -53,7 +53,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_F03392",
+          Some("BKK_F03392"),
           "Örs vezér tere M+H",
           Some(1771782780),
           Some(1771782809),
@@ -63,7 +63,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_F03392",
+          Some("BKK_F03392"),
           "Örs vezér tere M+H",
           Some(1771782840),
           Some(1771782840),
@@ -73,7 +73,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_19824287",
+          Some("BKK_19824287"),
           "Csömör",
           Some(1771782960),
           None,
@@ -83,7 +83,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_F03392",
+          Some("BKK_F03392"),
           "Rákosszentmihály vasútállomás",
           Some(1771783080),
           Some(1771783080),
@@ -93,7 +93,7 @@ ArrivalsAndDeparturesForStop(
           [],
         ),
         StopTime(
-          "BKK_19824288",
+          Some("BKK_19824288"),
           "Örs vezér tere",
           Some(1771783260),
           None,
