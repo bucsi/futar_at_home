@@ -56,7 +56,8 @@ pub fn template(
             [],
             [
               #("Mátyásföld", "matyasfold-rendorseg"),
-              #("Örs vezér tere", "ors"),
+              #("Bökényföld", "bokenyfoldi-ujszasz"),
+              #("Örs Vezér tere", "ors"),
               #("Gödöllő", "godollo-szabadsag-ter"),
             ]
               |> list.map(fn(menuitem) {

@@ -37,6 +37,10 @@ const ors_vezer_tere_h = model.Stop(
   name: "Örs vezér tere M+H",
 )
 
+const bokenyfoldi_ut = model.Stop(id: "BKK_F03319", name: "Bökényföldi út")
+
+const ujszasz_utca = model.Stop(id: "BKK_F03316", name: "Újszász utca")
+
 pub fn matyasfold_rendorseg(api_key: String) -> Response(wisp.Body) {
   [jokai_mor_utca_rendorseg, matyasfold_repuloter_h]
   |> render_timetable_for_stops(api_key)
@@ -49,6 +53,11 @@ pub fn godollo_szabadsag_ter(api_key: String) -> Response(wisp.Body) {
 
 pub fn ors_vezer_tere(api_key: String) -> Response(wisp.Body) {
   [ors_vezer_tere_m_h, ors_vezer_tere_h]
+  |> render_timetable_for_stops(api_key)
+}
+
+pub fn bokenyfoldi_ujszasz(api_key: String) -> Response(wisp.Body) {
+  [bokenyfoldi_ut, ujszasz_utca]
   |> render_timetable_for_stops(api_key)
 }
 

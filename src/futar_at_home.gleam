@@ -25,6 +25,7 @@ pub fn main() -> Nil {
         ["matyasfold-rendorseg"] -> controller.matyasfold_rendorseg(api_key)
         ["ors"] -> controller.ors_vezer_tere(api_key)
         ["godollo-szabadsag-ter"] -> controller.godollo_szabadsag_ter(api_key)
+        ["bokenyfoldi-ujszasz"] -> controller.bokenyfoldi_ujszasz(api_key)
         _ -> wisp.not_found()
       }
     }
